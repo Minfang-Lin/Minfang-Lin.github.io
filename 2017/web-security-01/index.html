@@ -1,4 +1,150 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Web安全学习笔记（1） · 叶卡林娜的部落格</title><meta name="description" content="Web安全学习笔记（1） - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Web安全学习笔记（1）</h1><div class="post-info">Mar 25, 2017</div><div class="post-content"><h2 id="Web介绍"><a href="#Web介绍" class="headerlink" title="Web介绍"></a>Web介绍</h2><h3 id="Web发展史"><a href="#Web发展史" class="headerlink" title="Web发展史"></a>Web发展史</h3><h4 id="什么是Web？"><a href="#什么是Web？" class="headerlink" title="什么是Web？"></a>什么是Web？</h4><p>Web的本意指网，这里指的是万维网（World Wide Web）。它是由许多互相链接的超文本组成的，通过互联网访问。Web是非常普遍的互联网应用，每天都有数以亿万计的Web资源，如图片、html页面、音频、视频等，从全世界的Web服务器快速的传递到我们的浏览器上。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Web介绍Web发展史什么是Web？Web的本意指网，这里指的是万维网（World Wide Web）。它是由许多互相链接的超文本组成的，通过互联网访问。Web是非常普遍的互联网应用，每天都有数以亿万计的Web资源，如图片、html页面、音频、视频等，从全世界的Web服务器快速的传递到我们的浏览器上。 Web1.0与Web2.0 Web1.0以个人网站、门户站点为主，主要使用大量静态页面，提供信息">
+<meta name="keywords" content="Web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web安全学习笔记（1）">
+<meta property="og:url" content="http://leavesite.com/2017/web-security-01/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="Web介绍Web发展史什么是Web？Web的本意指网，这里指的是万维网（World Wide Web）。它是由许多互相链接的超文本组成的，通过互联网访问。Web是非常普遍的互联网应用，每天都有数以亿万计的Web资源，如图片、html页面、音频、视频等，从全世界的Web服务器快速的传递到我们的浏览器上。 Web1.0与Web2.0 Web1.0以个人网站、门户站点为主，主要使用大量静态页面，提供信息">
+<meta property="og:updated_time" content="2017-05-21T05:43:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web安全学习笔记（1）">
+<meta name="twitter:description" content="Web介绍Web发展史什么是Web？Web的本意指网，这里指的是万维网（World Wide Web）。它是由许多互相链接的超文本组成的，通过互联网访问。Web是非常普遍的互联网应用，每天都有数以亿万计的Web资源，如图片、html页面、音频、视频等，从全世界的Web服务器快速的传递到我们的浏览器上。 Web1.0与Web2.0 Web1.0以个人网站、门户站点为主，主要使用大量静态页面，提供信息">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Web安全学习笔记（1）</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/web-security-02/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/jjhouCpp1114-04/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2017/web-security-01/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2017/web-security-01/&text=Web安全学习笔记（1）"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2017/web-security-01/&is_video=false&description=Web安全学习笔记（1）"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web安全学习笔记（1）&body=Check out this article: http://leavesite.com/2017/web-security-01/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2017/web-security-01/&name=Web安全学习笔记（1）&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web介绍"><span class="toc-number">1.</span> <span class="toc-text">Web介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Web发展史"><span class="toc-number">1.1.</span> <span class="toc-text">Web发展史</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是Web？"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是Web？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Web1-0与Web2-0"><span class="toc-number">1.1.2.</span> <span class="toc-text">Web1.0与Web2.0</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web流程"><span class="toc-number">1.2.</span> <span class="toc-text">Web流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器"><span class="toc-number">1.3.</span> <span class="toc-text">浏览器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web通信"><span class="toc-number">2.</span> <span class="toc-text">Web通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#URL协议"><span class="toc-number">2.1.</span> <span class="toc-text">URL协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP协议"><span class="toc-number">2.2.</span> <span class="toc-text">HTTP协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见Web安全事件"><span class="toc-number">3.</span> <span class="toc-text">常见Web安全事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见Web漏洞"><span class="toc-number">4.</span> <span class="toc-text">常见Web漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-XSS"><span class="toc-number">4.1.</span> <span class="toc-text">1.XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-CSRF"><span class="toc-number">4.2.</span> <span class="toc-text">2.CSRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-点击劫持"><span class="toc-number">4.3.</span> <span class="toc-text">3.点击劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-URL跳转"><span class="toc-number">4.4.</span> <span class="toc-text">4.URL跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-SQL注入"><span class="toc-number">4.5.</span> <span class="toc-text">5.SQL注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-命令注入"><span class="toc-number">4.6.</span> <span class="toc-text">6.命令注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-文件操作漏洞"><span class="toc-number">4.7.</span> <span class="toc-text">7.文件操作漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入漏洞工具SQLMAP"><span class="toc-number">5.</span> <span class="toc-text">SQL注入漏洞工具SQLMAP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DVWA"><span class="toc-number">6.</span> <span class="toc-text">DVWA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#command-Injection"><span class="toc-number">6.1.</span> <span class="toc-text">command Injection</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#low"><span class="toc-number">6.1.1.</span> <span class="toc-text">low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium"><span class="toc-number">6.1.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#high"><span class="toc-number">6.1.3.</span> <span class="toc-text">high</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Web安全学习笔记（1）
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2017-03-25T10:55:06.000Z" itemprop="datePublished">2017-03-25</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/Web安全/">Web安全</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Web介绍"><a href="#Web介绍" class="headerlink" title="Web介绍"></a>Web介绍</h2><h3 id="Web发展史"><a href="#Web发展史" class="headerlink" title="Web发展史"></a>Web发展史</h3><h4 id="什么是Web？"><a href="#什么是Web？" class="headerlink" title="什么是Web？"></a>什么是Web？</h4><p>Web的本意指网，这里指的是万维网（World Wide Web）。它是由许多互相链接的超文本组成的，通过互联网访问。Web是非常普遍的互联网应用，每天都有数以亿万计的Web资源，如图片、html页面、音频、视频等，从全世界的Web服务器快速的传递到我们的浏览器上。</p>
 <h4 id="Web1-0与Web2-0"><a href="#Web1-0与Web2-0" class="headerlink" title="Web1.0与Web2.0"></a>Web1.0与Web2.0</h4><ul>
 <li>Web1.0以个人网站、门户站点为主，主要使用大量静态页面，提供信息给用户。只能阅读，不能添加或修改。常见的安全问题包括SQL注入、文件包含、命令执行、上传漏洞、挂马、暗链等。主要危害Web服务器。</li>
 <li>Web2.0如微博、博客，可以进行人与人之间的互动。常见的安全问题包括XSS、CSRF、数据劫持、URL跳转、钓鱼、框架漏洞、逻辑漏洞等。逐渐开始针对上网的Web用户。</li>
@@ -125,14 +271,90 @@
 </tr>
 </tbody>
 </table>
-</div></article></div></section><footer><div class="paginator"><a href="/2017/web-security-02/" class="prev">PREV</a><a href="/2017/jjhouCpp1114-04/" class="next">NEXT</a></div><div data-thread-key="2017/web-security-01/" data-title="Web安全学习笔记（1）" data-url="http://leavesite.com/2017/web-security-01/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+  </div>
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web介绍"><span class="toc-number">1.</span> <span class="toc-text">Web介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Web发展史"><span class="toc-number">1.1.</span> <span class="toc-text">Web发展史</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是Web？"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是Web？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Web1-0与Web2-0"><span class="toc-number">1.1.2.</span> <span class="toc-text">Web1.0与Web2.0</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web流程"><span class="toc-number">1.2.</span> <span class="toc-text">Web流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器"><span class="toc-number">1.3.</span> <span class="toc-text">浏览器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web通信"><span class="toc-number">2.</span> <span class="toc-text">Web通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#URL协议"><span class="toc-number">2.1.</span> <span class="toc-text">URL协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP协议"><span class="toc-number">2.2.</span> <span class="toc-text">HTTP协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见Web安全事件"><span class="toc-number">3.</span> <span class="toc-text">常见Web安全事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见Web漏洞"><span class="toc-number">4.</span> <span class="toc-text">常见Web漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-XSS"><span class="toc-number">4.1.</span> <span class="toc-text">1.XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-CSRF"><span class="toc-number">4.2.</span> <span class="toc-text">2.CSRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-点击劫持"><span class="toc-number">4.3.</span> <span class="toc-text">3.点击劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-URL跳转"><span class="toc-number">4.4.</span> <span class="toc-text">4.URL跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-SQL注入"><span class="toc-number">4.5.</span> <span class="toc-text">5.SQL注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-命令注入"><span class="toc-number">4.6.</span> <span class="toc-text">6.命令注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-文件操作漏洞"><span class="toc-number">4.7.</span> <span class="toc-text">7.文件操作漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入漏洞工具SQLMAP"><span class="toc-number">5.</span> <span class="toc-text">SQL注入漏洞工具SQLMAP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DVWA"><span class="toc-number">6.</span> <span class="toc-text">DVWA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#command-Injection"><span class="toc-number">6.1.</span> <span class="toc-text">command Injection</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#low"><span class="toc-number">6.1.1.</span> <span class="toc-text">low</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium"><span class="toc-number">6.1.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#high"><span class="toc-number">6.1.3.</span> <span class="toc-text">high</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2017/web-security-01/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2017/web-security-01/&text=Web安全学习笔记（1）"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2017/web-security-01/&is_video=false&description=Web安全学习笔记（1）"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web安全学习笔记（1）&body=Check out this article: http://leavesite.com/2017/web-security-01/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2017/web-security-01/&title=Web安全学习笔记（1）"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2017/web-security-01/&name=Web安全学习笔记（1）&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,4 +1,153 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Geekband C++面向对象高级编程 第五周作业 · 叶卡林娜的部落格</title><meta name="description" content="Geekband C++面向对象高级编程 第五周作业 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Geekband C++面向对象高级编程 第五周作业</h1><div class="post-info">Mar 5, 2016</div><div class="post-content"><h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>为上周题目中的 Fruit和Apple 添加 构造函数与 析构函数，并在构造函数与析构函数中打印控制台信息，观察构造和析构调用过程。然后为Apple类重载::operator new和::operator delete，在控制台打印信息，并观察调用结果。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目说明：为上周题目中的 Fruit和Apple 添加 构造函数与 析构函数，并在构造函数与析构函数中打印控制台信息，观察构造和析构调用过程。然后为Apple类重载::operator new和::operator delete，在控制台打印信息，并观察调用结果。">
+<meta name="keywords" content="Cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Geekband C++面向对象高级编程 第五周作业">
+<meta property="og:url" content="http://leavesite.com/2016/Geekband-CPP-Homework-W5/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="题目说明：为上周题目中的 Fruit和Apple 添加 构造函数与 析构函数，并在构造函数与析构函数中打印控制台信息，观察构造和析构调用过程。然后为Apple类重载::operator new和::operator delete，在控制台打印信息，并观察调用结果。">
+<meta property="og:image" content="http://leavesite.com/images/TCPL%20P547.png">
+<meta property="og:image" content="http://leavesite.com/images/TCPL%20P557.png">
+<meta property="og:updated_time" content="2017-04-14T14:03:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekband C++面向对象高级编程 第五周作业">
+<meta name="twitter:description" content="题目说明：为上周题目中的 Fruit和Apple 添加 构造函数与 析构函数，并在构造函数与析构函数中打印控制台信息，观察构造和析构调用过程。然后为Apple类重载::operator new和::operator delete，在控制台打印信息，并观察调用结果。">
+<meta name="twitter:image" content="http://leavesite.com/images/TCPL%20P547.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Geekband C++面向对象高级编程 第五周作业</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/Geekband-CPP-Homework-STL-W1/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/Geekband-CPP-Homework-W4/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-W5/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&text=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&is_video=false&description=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++面向对象高级编程 第五周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-W5/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&name=Geekband C++面向对象高级编程 第五周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;为上周题目中的 Fruit和Apple 添加 构造函数与 析构函数，并在构造函数与析构函数中打印控制台信息，观察构造和析构调用过程。然后为Apple类重载::operator new和::operator delete，在控制台打印信息，并观察调用结果。&lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Geekband C++面向对象高级编程 第五周作业
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2016-03-05T14:00:00.000Z" itemprop="datePublished">2016-03-05</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/Cpp/">Cpp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>为上周题目中的 Fruit和Apple 添加 构造函数与 析构函数，并在构造函数与析构函数中打印控制台信息，观察构造和析构调用过程。然后为Apple类重载::operator new和::operator delete，在控制台打印信息，并观察调用结果。</p>
 <a id="more"></a>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>原始提交代码：<a href="\Geekband-cpp-w5.rar">Geekband-cpp-w5.rar</a></p>
 <p>附件2个文件夹，1是添加完构造函数和析构函数后，调用测试；2是添加了operator new、delete后的调用测试。由于题目里面::有一种全局的感觉，所以Apple类和全局的重载都写了，写完想想既然都写了，那么就把数组的也写一下（正好可以观察下第三周做法的内部实现）。</p>
@@ -28,14 +177,90 @@
 <p>点评中提到这道题目的本意是重载Apple类里的new和delete，一般做工程时也不会去“重载”全局new和delete，在Apple类里面可以调用全局的new和delete。.h文件可以改成如下：</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __FRUIT_H__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __FRUIT_H__ </span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//----------------------------------------------------------------  </span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> &#123;</span></div><div class="line">  <span class="keyword">int</span> no;</div><div class="line">  <span class="keyword">double</span> weight;</div><div class="line">  <span class="keyword">char</span> key;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  Fruit() &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"default Fruit ctor.this = "</span> &lt;&lt; <span class="keyword">this</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">virtual</span> ~Fruit() &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Fruit dtor.this = "</span> &lt;&lt; <span class="keyword">this</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span> </span>&#123;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//----------------------------------------------------------------  </span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span>:</span> <span class="keyword">public</span> Fruit &#123;</div><div class="line">  <span class="keyword">int</span> size;</div><div class="line">  <span class="keyword">char</span> type;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  Apple() &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"default Apple ctor.this = "</span> &lt;&lt; <span class="keyword">this</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">virtual</span> ~Apple() &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Apple dtor.this = "</span> &lt;&lt; <span class="keyword">this</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span> </span>&#123;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span>* <span class="keyword">operator</span> <span class="title">new</span><span class="params">(<span class="keyword">size_t</span> size)</span></span>;</div><div class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="keyword">operator</span> <span class="title">delete</span><span class="params">(<span class="keyword">void</span>* ptr, <span class="keyword">size_t</span> size)</span> <span class="keyword">noexcept</span></span>;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">void</span>* <span class="keyword">operator</span> <span class="keyword">new</span>[](<span class="keyword">size_t</span> size);</div><div class="line">  <span class="keyword">static</span> <span class="keyword">void</span> <span class="keyword">operator</span> <span class="keyword">delete</span>[](<span class="keyword">void</span>* ptr, <span class="keyword">size_t</span> size) <span class="keyword">noexcept</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">inline</span></div><div class="line"><span class="keyword">void</span>* Apple::<span class="function"><span class="keyword">operator</span> <span class="title">new</span><span class="params">(<span class="keyword">size_t</span> size)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">void</span>* ptr = ::<span class="keyword">operator</span> <span class="keyword">new</span>(size)) &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Apple::new(), size = "</span> &lt;&lt; size &lt;&lt; <span class="string">", return: "</span> &lt;&lt; ptr &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> ptr;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">throw</span> bad_alloc();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span></div><div class="line"><span class="keyword">void</span> Apple::<span class="function"><span class="keyword">operator</span> <span class="title">delete</span><span class="params">(<span class="keyword">void</span>* ptr, <span class="keyword">size_t</span> size)</span> <span class="keyword">noexcept</span> </span>&#123;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Apple::delete(), ptr = "</span> &lt;&lt; ptr &lt;&lt; <span class="string">", size = "</span> &lt;&lt; size &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  ::<span class="function"><span class="keyword">operator</span> <span class="title">delete</span><span class="params">(ptr)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span></div><div class="line"><span class="keyword">void</span>* Apple::<span class="keyword">operator</span> <span class="keyword">new</span>[](<span class="keyword">size_t</span> size) &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">void</span>* ptr = ::<span class="keyword">operator</span> <span class="keyword">new</span>(size)) &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Apple::new[](), size = "</span> &lt;&lt; size &lt;&lt; <span class="string">", return: "</span> &lt;&lt; ptr</div><div class="line">        &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> ptr;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">throw</span> bad_alloc();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span></div><div class="line"><span class="keyword">void</span> Apple::<span class="keyword">operator</span> <span class="keyword">delete</span>[](<span class="keyword">void</span>* ptr, <span class="keyword">size_t</span> size) <span class="keyword">noexcept</span> &#123;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Apple::delete[](), ptr = "</span> &lt;&lt; ptr &lt;&lt; <span class="string">", size = "</span> &lt;&lt; size &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  ::<span class="function"><span class="keyword">operator</span> <span class="title">delete</span><span class="params">(ptr)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//----------------------------------------------------------------  </span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>  <span class="comment">//fruit.h</span></span></div></pre></td></tr></table></figure>
 <p>另前面提到的第三点，在TCPL里面也提到了，这里的delete是针对正常new出来内存做处理，如果自己随便给指针一个地址（悬浮指针），可能就会造成无法估计的错误。李老师提出可能p非nullptr的时候会做其他处理，而nullptr不需要，这也是一种可能。</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/Geekband-CPP-Homework-STL-W1/" class="prev">PREV</a><a href="/2016/Geekband-CPP-Homework-W4/" class="next">NEXT</a></div><div data-thread-key="2016/Geekband-CPP-Homework-W5/" data-title="Geekband C++面向对象高级编程 第五周作业" data-url="http://leavesite.com/2016/Geekband-CPP-Homework-W5/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+  </div>
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-W5/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&text=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&is_video=false&description=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++面向对象高级编程 第五周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-W5/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&title=Geekband C++面向对象高级编程 第五周作业"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-W5/&name=Geekband C++面向对象高级编程 第五周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;为上周题目中的 Fruit和Apple 添加 构造函数与 析构函数，并在构造函数与析构函数中打印控制台信息，观察构造和析构调用过程。然后为Apple类重载::operator new和::operator delete，在控制台打印信息，并观察调用结果。&lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

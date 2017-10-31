@@ -1,6 +1,326 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 叶卡林娜的部落格</title><meta name="description" content="A simple blog about medicine, programmering and other interesting things."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link active">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/structural-biochemistry-w1/" class="post-title-link">结构生物化学 - 01 蛋白质的结构与功能</a></h2><div class="post-info">Sep 10, 2017</div><div class="post-content"></div><a href="/2017/structural-biochemistry-w1/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/jjhouCppOop-01/" class="post-title-link">面向对象C++程序设计 - 01</a></h2><div class="post-info">Aug 23, 2017</div><div class="post-content"></div><a href="/2017/jjhouCppOop-01/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/python-w2/" class="post-title-link">Python语言程序设计 W2</a></h2><div class="post-info">Jun 25, 2017</div><div class="post-content"></div><a href="/2017/python-w2/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/python-w1/" class="post-title-link">Python语言程序设计 W1</a></h2><div class="post-info">Jun 25, 2017</div><div class="post-content"><p>第一个程序，温度转换器。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># TempConvert.py</span></div><div class="line">val = input(<span class="string">"请输入带温度表示符号的温度值(例如：32C):"</span>)</div><div class="line"><span class="keyword">if</span> val[<span class="number">-1</span>] <span class="keyword">in</span> [<span class="string">'C'</span>,<span class="string">'c'</span>]:</div><div class="line">    f = <span class="number">1.8</span> * float(val[<span class="number">0</span>:<span class="number">-1</span>]) + <span class="number">32</span></div><div class="line">    print(<span class="string">"转换后的温度为：%.2fF"</span>%f)</div><div class="line"><span class="keyword">elif</span> val[<span class="number">-1</span>] <span class="keyword">in</span> [<span class="string">'F'</span>,<span class="string">'f'</span>]:</div><div class="line">    c = (float(val[<span class="number">0</span>:<span class="number">-1</span>]) - <span class="number">32</span>) / <span class="number">1.8</span></div><div class="line">    print(<span class="string">"转换后的温度为：%.2fC"</span>%c)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">"输入有误"</span>)</div></pre></td></tr></table></figure>
-<p><code>input()</code>读入数据，括号内为读入数据时的友好型提示，读入数据赋值给val。<br><code>val[-1]</code>表示val值中的最后一个字符，<code>[&#39;C&#39;,&#39;c&#39;]</code>表示字符所在范围（是不是C或者c）。<br><code>val[0:-1]</code>为取得除了最后一个字符外val的数据。</p></div><a href="/2017/python-w1/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/cppstartup/" class="post-title-link">C++程序的生前死后</a></h2><div class="post-info">May 27, 2017</div><div class="post-content"></div><a href="/2017/cppstartup/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/web-security-02/" class="post-title-link">Web安全学习笔记（2）</a></h2><div class="post-info">May 19, 2017</div><div class="post-content"></div><a href="/2017/web-security-02/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/web-security-01/" class="post-title-link">Web安全学习笔记（1）</a></h2><div class="post-info">Mar 25, 2017</div><div class="post-content"></div><a href="/2017/web-security-01/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/jjhouCpp1114-04/" class="post-title-link">C++ 新标准 11/14 标准库新部件 - 01</a></h2><div class="post-info">Jan 29, 2017</div><div class="post-content"></div><a href="/2017/jjhouCpp1114-04/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/jjhouCpp1114-03/" class="post-title-link">C++ 新标准 11/14 语言新特性 - 03</a></h2><div class="post-info">Jan 15, 2017</div><div class="post-content"></div><a href="/2017/jjhouCpp1114-03/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/jjhouCpp1114-02/" class="post-title-link">C++ 新标准 11/14 语言新特性 - 02</a></h2><div class="post-info">Jan 11, 2017</div><div class="post-content"><h2 id="explicit关键字"><a href="#explicit关键字" class="headerlink" title="explicit关键字"></a>explicit关键字</h2><p>C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Complex1</span> </span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">int</span> real, imag;</div><div class="line">    </div><div class="line">    Complex1(<span class="keyword">int</span> re, <span class="keyword">int</span> im=<span class="number">0</span>) : real(re), imag(im) &#123;  &#125;</div><div class="line"></div><div class="line">    Complex1 <span class="keyword">operator</span>+(<span class="keyword">const</span> Complex1&amp; x) </div><div class="line">    &#123; <span class="keyword">return</span> Complex1((real + x.real), (imag + x.imag)); &#125;     	</div><div class="line">&#125;;	</div><div class="line"></div><div class="line"><span class="function">Complex1 <span class="title">c1</span><span class="params">(<span class="number">12</span>,<span class="number">5</span>)</span></span>;</div><div class="line">Complex1 c2 = c1 + <span class="number">5</span>;</div></pre></td></tr></table></figure>
-<p>这里的im有默认值，所以只有一个需要的实参，还是属于none explicit one argument constructor。</p>
-<p>编译器会去找是否可以将5转换为复数（5+0i），所以利用构造函数将5变为复数。</p></div><a href="/2017/jjhouCpp1114-02/" class="read-more">...more</a></article></li></ul></section><footer><div class="paginator"><a href="/page/2/" class="next">NEXT</a></div><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="A simple blog about medicine, programmering and other interesting things.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="叶卡林娜的部落格">
+<meta property="og:url" content="http://leavesite.com/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="A simple blog about medicine, programmering and other interesting things.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="叶卡林娜的部落格">
+<meta name="twitter:description" content="A simple blog about medicine, programmering and other interesting things.">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>叶卡林娜的部落格</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="content index width mx-auto px2 my4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>叶卡林娜的部落格</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fa fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <section id="about">
+  
+    <p>A simple blog about medicine, programmering and other interesting things.</p>
+
+  
+  <p style="display: inline">
+    
+      Find me on
+      <ul id="sociallinks">
+        
+          <li><a class="icon" target="_blank" href="http://github.com/Minfang-Lin" title="github"><i class="fa fa-github"></i></a></li>
+        
+          <li><a class="icon" target="_blank" href="https://twitter.com/leafcard" title="twitter"><i class="fa fa-twitter"></i></a></li>
+        
+          <li><a class="icon" target="_blank" href="https://www.facebook.com/minfang.lin.5" title="facebook"><i class="fa fa-facebook"></i></a></li>
+        
+          <li><a class="icon" target="_blank" href="http://www.weibo.com/leafcard" title="weibo"><i class="fa fa-weibo"></i></a></li>
+        
+      </ul>
+    
+  </p>
+</section>
+
+<section id="writing">
+  <span class="h1"><a href="/archives">Writing</a></span>
+  <ul class="post-list">
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-09-10T02:00:00.000Z" itemprop="datePublished">2017-09-10</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/structural-biochemistry-w1/">结构生物化学 - 01 蛋白质的结构与功能</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-08-23T10:00:00.000Z" itemprop="datePublished">2017-08-23</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/jjhouCppOop-01/">面向对象C++程序设计 - 01</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-06-25T12:00:00.000Z" itemprop="datePublished">2017-06-25</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/python-w2/">Python语言程序设计 W2</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-06-25T07:00:00.000Z" itemprop="datePublished">2017-06-25</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/python-w1/">Python语言程序设计 W1</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-05-27T03:40:00.000Z" itemprop="datePublished">2017-05-27</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/cppstartup/">C++程序的生前死后</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-05-19T11:00:00.000Z" itemprop="datePublished">2017-05-19</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/web-security-02/">Web安全学习笔记（2）</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-03-25T10:55:06.000Z" itemprop="datePublished">2017-03-25</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/web-security-01/">Web安全学习笔记（1）</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-01-29T13:00:00.000Z" itemprop="datePublished">2017-01-29</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/jjhouCpp1114-04/">C++ 新标准 11/14 标准库新部件 - 01</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-01-15T12:00:00.000Z" itemprop="datePublished">2017-01-15</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/jjhouCpp1114-03/">C++ 新标准 11/14 语言新特性 - 03</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-01-11T12:00:00.000Z" itemprop="datePublished">2017-01-11</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/jjhouCpp1114-02/">C++ 新标准 11/14 语言新特性 - 02</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section id="projects">
+  <span class="h1"><a href="http://github.com/Minfang-Lin">Resources</a></span>
+  <ul class="project-list">
+    
+      <li class="project-item">
+        <a href="https://github.com/Minfang-Lin/OnlineJudge">Online Judge AC Code</a>: 玩Online Judge的记录
+      </li>
+    
+      <li class="project-item">
+        <a href="/medical-books/">Medical Books</a>: 医学图书电子版收集
+      </li>
+    
+      <li class="project-item">
+        <a href="/nostalgic-data/">Nostalgic Data</a>: 广为人知的电波怒汉录音合集
+      </li>
+    
+  </ul>
+</section>
+
+
+    </div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

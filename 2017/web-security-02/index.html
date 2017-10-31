@@ -1,4 +1,150 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Web安全学习笔记（2） · 叶卡林娜的部落格</title><meta name="description" content="Web安全学习笔记（2） - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Web安全学习笔记（2）</h1><div class="post-info">May 19, 2017</div><div class="post-content"><h2 id="SDL介绍"><a href="#SDL介绍" class="headerlink" title="SDL介绍"></a>SDL介绍</h2><p>SDL（Security Development Lifecycle，安全开发生产周期），提倡Secure at the Source，最早来源于微软。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="SDL介绍SDL（Security Development Lifecycle，安全开发生产周期），提倡Secure at the Source，最早来源于微软。 为什么要用SDL？  可以减少安全漏洞和隐私问题的数量 降低残留漏洞的安全风险，降低安全漏洞修复成本  规范公司Web应用开发流程，包括：安全需求分析、代码检查、安全测试等等。 SDL流程的组成阶段：  培训：让所有相关的工作人员具有相">
+<meta name="keywords" content="Web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web安全学习笔记（2）">
+<meta property="og:url" content="http://leavesite.com/2017/web-security-02/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="SDL介绍SDL（Security Development Lifecycle，安全开发生产周期），提倡Secure at the Source，最早来源于微软。 为什么要用SDL？  可以减少安全漏洞和隐私问题的数量 降低残留漏洞的安全风险，降低安全漏洞修复成本  规范公司Web应用开发流程，包括：安全需求分析、代码检查、安全测试等等。 SDL流程的组成阶段：  培训：让所有相关的工作人员具有相">
+<meta property="og:updated_time" content="2017-05-20T05:51:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web安全学习笔记（2）">
+<meta name="twitter:description" content="SDL介绍SDL（Security Development Lifecycle，安全开发生产周期），提倡Secure at the Source，最早来源于微软。 为什么要用SDL？  可以减少安全漏洞和隐私问题的数量 降低残留漏洞的安全风险，降低安全漏洞修复成本  规范公司Web应用开发流程，包括：安全需求分析、代码检查、安全测试等等。 SDL流程的组成阶段：  培训：让所有相关的工作人员具有相">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Web安全学习笔记（2）</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/cppstartup/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/web-security-01/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2017/web-security-02/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2017/web-security-02/&text=Web安全学习笔记（2）"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2017/web-security-02/&is_video=false&description=Web安全学习笔记（2）"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web安全学习笔记（2）&body=Check out this article: http://leavesite.com/2017/web-security-02/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2017/web-security-02/&name=Web安全学习笔记（2）&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SDL介绍"><span class="toc-number">1.</span> <span class="toc-text">SDL介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞和事件处理"><span class="toc-number">2.</span> <span class="toc-text">漏洞和事件处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全运营概述"><span class="toc-number">3.</span> <span class="toc-text">安全运营概述</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Web安全学习笔记（2）
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2017-05-19T11:00:00.000Z" itemprop="datePublished">2017-05-19</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/Web安全/">Web安全</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="SDL介绍"><a href="#SDL介绍" class="headerlink" title="SDL介绍"></a>SDL介绍</h2><p>SDL（Security Development Lifecycle，安全开发生产周期），提倡Secure at the Source，最早来源于微软。</p>
 <p>为什么要用SDL？</p>
 <ol>
 <li>可以减少安全漏洞和隐私问题的数量</li>
@@ -28,14 +174,90 @@
 <p>安全运营有哪些工作？</p>
 <p>安全运营可以通过漏洞扫描、渗透测试、代码审计等方式发现和修复安全问题，比如入侵检测系统、Web应用防火墙、防Doss设备等防御工作防范未然或在事后进行快速应急响应。推动SDL流程以减少漏洞问题，降低维护成本。由于SDL流程在实际情况中可能难以推行，需要领导层的支持，同时安全人员需要给其他开发及测试人员灌输安全概念，并且利用一些安全问题的契机来推动SDL落地。</p>
 <p>安全工作包括对外工作和对内工作。对内工作包括周期性的安全扫描，如对于新上线的功能及时扫描，对于重要端口每日扫描，对于0day漏洞及时扫描等。每天需要关注业内新的安全事件，并对其进行评估，并提前部署公司的防御方案。同时安全人员也需要对公司的系统有详细的了解，以提前提供解决方案，比如使用WAF这样的虚拟补丁。并且制定应急响应的流程，以应对突发的安全问题。对外工作包括利用IM工具、邮件、论坛等搜集用户反馈，紧跟安全圈，参加他们的活动，融入圈子进行合作。</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2017/cppstartup/" class="prev">PREV</a><a href="/2017/web-security-01/" class="next">NEXT</a></div><div data-thread-key="2017/web-security-02/" data-title="Web安全学习笔记（2）" data-url="http://leavesite.com/2017/web-security-02/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+  </div>
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SDL介绍"><span class="toc-number">1.</span> <span class="toc-text">SDL介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞和事件处理"><span class="toc-number">2.</span> <span class="toc-text">漏洞和事件处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全运营概述"><span class="toc-number">3.</span> <span class="toc-text">安全运营概述</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2017/web-security-02/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2017/web-security-02/&text=Web安全学习笔记（2）"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2017/web-security-02/&is_video=false&description=Web安全学习笔记（2）"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web安全学习笔记（2）&body=Check out this article: http://leavesite.com/2017/web-security-02/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2017/web-security-02/&title=Web安全学习笔记（2）"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2017/web-security-02/&name=Web安全学习笔记（2）&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

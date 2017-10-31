@@ -1,4 +1,152 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Spring学习笔记（一） · 叶卡林娜的部落格</title><meta name="description" content="Spring学习笔记（一） - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Spring学习笔记（一）</h1><div class="post-info">Oct 8, 2016</div><div class="post-content"><h2 id="Spring框架是什么？"><a href="#Spring框架是什么？" class="headerlink" title="Spring框架是什么？"></a>Spring框架是什么？</h2><p>The Spring Framework is a lightweight solution and a potential one-stop-shop for building your enterprise ready applications.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Spring框架是什么？The Spring Framework is a lightweight solution and a potential one-stop-shop for building your enterprise ready applications. Srping framwork的核心技术Inversion of Control 控制反转Aspect-Oriented P">
+<meta name="keywords" content="JavaWeb,Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring学习笔记（一）">
+<meta property="og:url" content="http://leavesite.com/2016/spring-note-1/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="Spring框架是什么？The Spring Framework is a lightweight solution and a potential one-stop-shop for building your enterprise ready applications. Srping framwork的核心技术Inversion of Control 控制反转Aspect-Oriented P">
+<meta property="og:updated_time" content="2017-04-14T14:03:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring学习笔记（一）">
+<meta name="twitter:description" content="Spring框架是什么？The Spring Framework is a lightweight solution and a potential one-stop-shop for building your enterprise ready applications. Srping framwork的核心技术Inversion of Control 控制反转Aspect-Oriented P">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Spring学习笔记（一）</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/spring-note-2/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/database-note-4/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/spring-note-1/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/spring-note-1/&text=Spring学习笔记（一）"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/spring-note-1/&is_video=false&description=Spring学习笔记（一）"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring学习笔记（一）&body=Check out this article: http://leavesite.com/2016/spring-note-1/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/spring-note-1/&name=Spring学习笔记（一）&description=&lt;h2 id=&quot;Spring框架是什么？&quot;&gt;&lt;a href=&quot;#Spring框架是什么？&quot; class=&quot;headerlink&quot; title=&quot;Spring框架是什么？&quot;&gt;&lt;/a&gt;Spring框架是什么？&lt;/h2&gt;&lt;p&gt;The Spring Framework is a lightweight solution and a potential one-stop-shop for building your enterprise ready applications.&lt;/p&gt;
+&lt;h2 id=&quot;Srping-framwork的核心技术&quot;&gt;&lt;a href=&quot;#Srping-framwork的核心技术&quot; class=&quot;headerlink&quot; title=&quot;Srping framwork的核心技术&quot;&gt;&lt;/a&gt;Srping framwork的核心技术&lt;/h2&gt;&lt;p&gt;Inversion of Control 控制反转&lt;br&gt;Aspect-Oriented Programming 面向切面编程&lt;/p&gt;
+&lt;h2 id=&quot;控制反转与依赖注入&quot;&gt;&lt;a href=&quot;#控制反转与依赖注入&quot; class=&quot;headerlink&quot; title=&quot;控制反转与依赖注入&quot;&gt;&lt;/a&gt;控制反转与依赖注入&lt;/h2&gt;&lt;p&gt;使程序组件或类之间尽量形成一种松耦合的结构，开发人员在使用类的实例之前需要创建对象的实例。IoC将创建实例的任务交给IoC容器，这样开发应用代码只需要直接使用类的实例，这就是IoC控制反转。通常用一个所谓的好莱坞原则（Don’t call me. I will call you.）来比喻这种控制反转关系。Martin Fowler曾专门写了一篇文章“Inversion of Control Containers and the Dependency Injection pattern”讨论控制反转这个概念，并提出一个更为准确的概念，即“依赖注入”。&lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring框架是什么？"><span class="toc-number">1.</span> <span class="toc-text">Spring框架是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Srping-framwork的核心技术"><span class="toc-number">2.</span> <span class="toc-text">Srping framwork的核心技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制反转与依赖注入"><span class="toc-number">3.</span> <span class="toc-text">控制反转与依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ioc容器初始化"><span class="toc-number">4.</span> <span class="toc-text">Ioc容器初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean定义"><span class="toc-number">5.</span> <span class="toc-text">Bean定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean使用"><span class="toc-number">6.</span> <span class="toc-text">Bean使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean的作用域"><span class="toc-number">7.</span> <span class="toc-text">Bean的作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean生命周期回调"><span class="toc-number">8.</span> <span class="toc-text">Bean生命周期回调</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖注入方式"><span class="toc-number">9.</span> <span class="toc-text">依赖注入方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过构造函数：主要应用于强依赖"><span class="toc-number">9.0.1.</span> <span class="toc-text">通过构造函数：主要应用于强依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Setter方法：主要应用于可选依赖"><span class="toc-number">9.0.2.</span> <span class="toc-text">Setter方法：主要应用于可选依赖</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动装配"><span class="toc-number">10.</span> <span class="toc-text">自动装配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过byName自动装配"><span class="toc-number">10.0.1.</span> <span class="toc-text">通过byName自动装配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过constructor自动装配"><span class="toc-number">10.0.2.</span> <span class="toc-text">通过constructor自动装配</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Annotation"><span class="toc-number">11.</span> <span class="toc-text">Annotation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP术语"><span class="toc-number">12.</span> <span class="toc-text">AOP术语</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Advice类型"><span class="toc-number">12.0.1.</span> <span class="toc-text">Advice类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-AOP"><span class="toc-number">12.0.2.</span> <span class="toc-text">Spring AOP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AspectJ-AOP"><span class="toc-number">12.0.3.</span> <span class="toc-text">@AspectJ AOP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义Aspect"><span class="toc-number">12.0.4.</span> <span class="toc-text">定义Aspect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义Pointcut"><span class="toc-number">12.0.5.</span> <span class="toc-text">定义Pointcut</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义Advice"><span class="toc-number">12.0.6.</span> <span class="toc-text">定义Advice</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Spring学习笔记（一）
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2016-10-08T02:00:00.000Z" itemprop="datePublished">2016-10-08</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/JavaWeb/">JavaWeb</a>, <a class="tag-link" href="/tags/Spring/">Spring</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Spring框架是什么？"><a href="#Spring框架是什么？" class="headerlink" title="Spring框架是什么？"></a>Spring框架是什么？</h2><p>The Spring Framework is a lightweight solution and a potential one-stop-shop for building your enterprise ready applications.</p>
 <h2 id="Srping-framwork的核心技术"><a href="#Srping-framwork的核心技术" class="headerlink" title="Srping framwork的核心技术"></a>Srping framwork的核心技术</h2><p>Inversion of Control 控制反转<br>Aspect-Oriented Programming 面向切面编程</p>
 <h2 id="控制反转与依赖注入"><a href="#控制反转与依赖注入" class="headerlink" title="控制反转与依赖注入"></a>控制反转与依赖注入</h2><p>使程序组件或类之间尽量形成一种松耦合的结构，开发人员在使用类的实例之前需要创建对象的实例。IoC将创建实例的任务交给IoC容器，这样开发应用代码只需要直接使用类的实例，这就是IoC控制反转。通常用一个所谓的好莱坞原则（Don’t call me. I will call you.）来比喻这种控制反转关系。Martin Fowler曾专门写了一篇文章“Inversion of Control Containers and the Dependency Injection pattern”讨论控制反转这个概念，并提出一个更为准确的概念，即“依赖注入”。</p>
 <a id="more"></a>
@@ -145,14 +293,92 @@
 <p>取得抛出的异常</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@AfterThrowing</span>(</div><div class="line">  pointcut=<span class="string">"com.netease.course.LoggingAspect.arithmetic()"</span>,</div><div class="line">  throwing=<span class="string">"ex"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doLog</span><span class="params">(IllegalArgumentException ex)</span> </span>&#123;</div><div class="line">  <span class="comment">// do something with ex</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>获取目标函数参数</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Before</span>(<span class="string">"com.netease.course.LoggingAspect.arithmetic() &amp;&amp; args(a, ..)"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doLog</span><span class="params">(JoinPoint jp, <span class="keyword">int</span> a)</span> </span>&#123;</div><div class="line">  <span class="comment">// do something with parameters</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></div></article></div></section><footer><div class="paginator"><a href="/2016/spring-note-2/" class="prev">PREV</a><a href="/2016/database-note-4/" class="next">NEXT</a></div><div data-thread-key="2016/spring-note-1/" data-title="Spring学习笔记（一）" data-url="http://leavesite.com/2016/spring-note-1/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Before</span>(<span class="string">"com.netease.course.LoggingAspect.arithmetic() &amp;&amp; args(a, ..)"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doLog</span><span class="params">(JoinPoint jp, <span class="keyword">int</span> a)</span> </span>&#123;</div><div class="line">  <span class="comment">// do something with parameters</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring框架是什么？"><span class="toc-number">1.</span> <span class="toc-text">Spring框架是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Srping-framwork的核心技术"><span class="toc-number">2.</span> <span class="toc-text">Srping framwork的核心技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制反转与依赖注入"><span class="toc-number">3.</span> <span class="toc-text">控制反转与依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ioc容器初始化"><span class="toc-number">4.</span> <span class="toc-text">Ioc容器初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean定义"><span class="toc-number">5.</span> <span class="toc-text">Bean定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean使用"><span class="toc-number">6.</span> <span class="toc-text">Bean使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean的作用域"><span class="toc-number">7.</span> <span class="toc-text">Bean的作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean生命周期回调"><span class="toc-number">8.</span> <span class="toc-text">Bean生命周期回调</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖注入方式"><span class="toc-number">9.</span> <span class="toc-text">依赖注入方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过构造函数：主要应用于强依赖"><span class="toc-number">9.0.1.</span> <span class="toc-text">通过构造函数：主要应用于强依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Setter方法：主要应用于可选依赖"><span class="toc-number">9.0.2.</span> <span class="toc-text">Setter方法：主要应用于可选依赖</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动装配"><span class="toc-number">10.</span> <span class="toc-text">自动装配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过byName自动装配"><span class="toc-number">10.0.1.</span> <span class="toc-text">通过byName自动装配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过constructor自动装配"><span class="toc-number">10.0.2.</span> <span class="toc-text">通过constructor自动装配</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Annotation"><span class="toc-number">11.</span> <span class="toc-text">Annotation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP术语"><span class="toc-number">12.</span> <span class="toc-text">AOP术语</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Advice类型"><span class="toc-number">12.0.1.</span> <span class="toc-text">Advice类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-AOP"><span class="toc-number">12.0.2.</span> <span class="toc-text">Spring AOP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AspectJ-AOP"><span class="toc-number">12.0.3.</span> <span class="toc-text">@AspectJ AOP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义Aspect"><span class="toc-number">12.0.4.</span> <span class="toc-text">定义Aspect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义Pointcut"><span class="toc-number">12.0.5.</span> <span class="toc-text">定义Pointcut</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义Advice"><span class="toc-number">12.0.6.</span> <span class="toc-text">定义Advice</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/spring-note-1/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/spring-note-1/&text=Spring学习笔记（一）"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/spring-note-1/&is_video=false&description=Spring学习笔记（一）"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring学习笔记（一）&body=Check out this article: http://leavesite.com/2016/spring-note-1/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/spring-note-1/&title=Spring学习笔记（一）"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/spring-note-1/&name=Spring学习笔记（一）&description=&lt;h2 id=&quot;Spring框架是什么？&quot;&gt;&lt;a href=&quot;#Spring框架是什么？&quot; class=&quot;headerlink&quot; title=&quot;Spring框架是什么？&quot;&gt;&lt;/a&gt;Spring框架是什么？&lt;/h2&gt;&lt;p&gt;The Spring Framework is a lightweight solution and a potential one-stop-shop for building your enterprise ready applications.&lt;/p&gt;
+&lt;h2 id=&quot;Srping-framwork的核心技术&quot;&gt;&lt;a href=&quot;#Srping-framwork的核心技术&quot; class=&quot;headerlink&quot; title=&quot;Srping framwork的核心技术&quot;&gt;&lt;/a&gt;Srping framwork的核心技术&lt;/h2&gt;&lt;p&gt;Inversion of Control 控制反转&lt;br&gt;Aspect-Oriented Programming 面向切面编程&lt;/p&gt;
+&lt;h2 id=&quot;控制反转与依赖注入&quot;&gt;&lt;a href=&quot;#控制反转与依赖注入&quot; class=&quot;headerlink&quot; title=&quot;控制反转与依赖注入&quot;&gt;&lt;/a&gt;控制反转与依赖注入&lt;/h2&gt;&lt;p&gt;使程序组件或类之间尽量形成一种松耦合的结构，开发人员在使用类的实例之前需要创建对象的实例。IoC将创建实例的任务交给IoC容器，这样开发应用代码只需要直接使用类的实例，这就是IoC控制反转。通常用一个所谓的好莱坞原则（Don’t call me. I will call you.）来比喻这种控制反转关系。Martin Fowler曾专门写了一篇文章“Inversion of Control Containers and the Dependency Injection pattern”讨论控制反转这个概念，并提出一个更为准确的概念，即“依赖注入”。&lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

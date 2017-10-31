@@ -1,4 +1,153 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> C++ 新标准 11/14 语言新特性 - 02 · 叶卡林娜的部落格</title><meta name="description" content="C++ 新标准 11/14 语言新特性 - 02 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">C++ 新标准 11/14 语言新特性 - 02</h1><div class="post-info">Jan 11, 2017</div><div class="post-content"><h2 id="explicit关键字"><a href="#explicit关键字" class="headerlink" title="explicit关键字"></a>explicit关键字</h2><p>C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="explicit关键字C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。 struct Complex1 &amp;#123;    int real, imag;        Complex1(int re, int im=0) : real(re), imag(im) &amp;#123;">
+<meta name="keywords" content="Cpp,侯捷,11&#x2F;14">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 新标准 11&#x2F;14 语言新特性 - 02">
+<meta property="og:url" content="http://leavesite.com/2017/jjhouCpp1114-02/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="explicit关键字C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。 struct Complex1 &amp;#123;    int real, imag;        Complex1(int re, int im=0) : real(re), imag(im) &amp;#123;">
+<meta property="og:updated_time" content="2017-10-31T12:45:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ 新标准 11&#x2F;14 语言新特性 - 02">
+<meta name="twitter:description" content="explicit关键字C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。 struct Complex1 &amp;#123;    int real, imag;        Complex1(int re, int im=0) : real(re), imag(im) &amp;#123;">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>C++ 新标准 11/14 语言新特性 - 02</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/jjhouCpp1114-03/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/jjhouCpp1114-01/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2017/jjhouCpp1114-02/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2017/jjhouCpp1114-02/&text=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2017/jjhouCpp1114-02/&is_video=false&description=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=C++ 新标准 11/14 语言新特性 - 02&body=Check out this article: http://leavesite.com/2017/jjhouCpp1114-02/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2017/jjhouCpp1114-02/&name=C++ 新标准 11/14 语言新特性 - 02&description=&lt;h2 id=&quot;explicit关键字&quot;&gt;&lt;a href=&quot;#explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;explicit关键字&quot;&gt;&lt;/a&gt;explicit关键字&lt;/h2&gt;&lt;p&gt;C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Complex1&lt;/span&gt; &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&amp;#123;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; real, imag;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Complex1(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; re, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; im=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) : real(re), imag(im) &amp;#123;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Complex1 &lt;span class=&quot;keyword&quot;&gt;operator&lt;/span&gt;+(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; Complex1&amp;amp; x) &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; Complex1((real + x.real), (imag + x.imag)); &amp;#125;     	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;Complex1 &lt;span class=&quot;title&quot;&gt;c1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Complex1 c2 = c1 + &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里的im有默认值，所以只有一个需要的实参，还是属于none explicit one argument constructor。&lt;/p&gt;
+&lt;p&gt;编译器会去找是否可以将5转换为复数（5+0i），所以利用构造函数将5变为复数。&lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#explicit关键字"><span class="toc-number">1.</span> <span class="toc-text">explicit关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#range-based-for-statement"><span class="toc-number">2.</span> <span class="toc-text">range-based for statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#default-delete"><span class="toc-number">3.</span> <span class="toc-text">=default, =delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Alias-Template（template-typedef）"><span class="toc-number">4.</span> <span class="toc-text">Alias Template（template typedef）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Alias（similar-to-typedef）"><span class="toc-number">5.</span> <span class="toc-text">Type Alias（similar to typedef）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#using的用法总结"><span class="toc-number">5.1.</span> <span class="toc-text">using的用法总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#noexcept"><span class="toc-number">6.</span> <span class="toc-text">noexcept</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必须使用noexcept的情况"><span class="toc-number">6.1.</span> <span class="toc-text"> 必须使用noexcept的情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#override"><span class="toc-number">7.</span> <span class="toc-text">override</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final"><span class="toc-number">8.</span> <span class="toc-text">final</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        C++ 新标准 11/14 语言新特性 - 02
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> Minfang Lin </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2017-01-11T12:00:00.000Z" itemprop="datePublished">2017-01-11</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/11-14/">11/14</a>, <a class="tag-link" href="/tags/Cpp/">Cpp</a>, <a class="tag-link" href="/tags/侯捷/">侯捷</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="explicit关键字"><a href="#explicit关键字" class="headerlink" title="explicit关键字"></a>explicit关键字</h2><p>C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Complex1</span> </span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">int</span> real, imag;</div><div class="line">    </div><div class="line">    Complex1(<span class="keyword">int</span> re, <span class="keyword">int</span> im=<span class="number">0</span>) : real(re), imag(im) &#123;  &#125;</div><div class="line"></div><div class="line">    Complex1 <span class="keyword">operator</span>+(<span class="keyword">const</span> Complex1&amp; x) </div><div class="line">    &#123; <span class="keyword">return</span> Complex1((real + x.real), (imag + x.imag)); &#125;     	</div><div class="line">&#125;;	</div><div class="line"></div><div class="line"><span class="function">Complex1 <span class="title">c1</span><span class="params">(<span class="number">12</span>,<span class="number">5</span>)</span></span>;</div><div class="line">Complex1 c2 = c1 + <span class="number">5</span>;</div></pre></td></tr></table></figure>
 <p>这里的im有默认值，所以只有一个需要的实参，还是属于none explicit one argument constructor。</p>
 <p>编译器会去找是否可以将5转换为复数（5+0i），所以利用构造函数将5变为复数。</p>
@@ -54,14 +203,93 @@
 <h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>用于修饰类或者虚函数。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Base1</span> <span class="title">final</span> &#123;</span> &#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived1</span> :</span> Base &#123; &#125;;</div><div class="line"><span class="comment">// Error: cannot derive from 'final' base 'Base1' in derived type 'Derived1'</span></div></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Base2</span> &#123;</span></div><div class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> final</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived2</span> :</span> Base2 &#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</div><div class="line">  <span class="comment">// Error: overriding final function 'virtual void Base2::f()'</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</div></article></div></section><footer><div class="paginator"><a href="/2017/jjhouCpp1114-03/" class="prev">PREV</a><a href="/2017/jjhouCpp1114-01/" class="next">NEXT</a></div><div data-thread-key="2017/jjhouCpp1114-02/" data-title="C++ 新标准 11/14 语言新特性 - 02" data-url="http://leavesite.com/2017/jjhouCpp1114-02/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+  </div>
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#explicit关键字"><span class="toc-number">1.</span> <span class="toc-text">explicit关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#range-based-for-statement"><span class="toc-number">2.</span> <span class="toc-text">range-based for statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#default-delete"><span class="toc-number">3.</span> <span class="toc-text">=default, =delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Alias-Template（template-typedef）"><span class="toc-number">4.</span> <span class="toc-text">Alias Template（template typedef）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Alias（similar-to-typedef）"><span class="toc-number">5.</span> <span class="toc-text">Type Alias（similar to typedef）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#using的用法总结"><span class="toc-number">5.1.</span> <span class="toc-text">using的用法总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#noexcept"><span class="toc-number">6.</span> <span class="toc-text">noexcept</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必须使用noexcept的情况"><span class="toc-number">6.1.</span> <span class="toc-text"> 必须使用noexcept的情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#override"><span class="toc-number">7.</span> <span class="toc-text">override</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final"><span class="toc-number">8.</span> <span class="toc-text">final</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2017/jjhouCpp1114-02/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2017/jjhouCpp1114-02/&text=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2017/jjhouCpp1114-02/&is_video=false&description=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=C++ 新标准 11/14 语言新特性 - 02&body=Check out this article: http://leavesite.com/2017/jjhouCpp1114-02/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2017/jjhouCpp1114-02/&title=C++ 新标准 11/14 语言新特性 - 02"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2017/jjhouCpp1114-02/&name=C++ 新标准 11/14 语言新特性 - 02&description=&lt;h2 id=&quot;explicit关键字&quot;&gt;&lt;a href=&quot;#explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;explicit关键字&quot;&gt;&lt;/a&gt;explicit关键字&lt;/h2&gt;&lt;p&gt;C++2.0之前explicit用于一个实参的构造函数（none explicit one argument constructor)。多余一个参数的不会发生隐式转换。&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Complex1&lt;/span&gt; &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&amp;#123;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; real, imag;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Complex1(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; re, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; im=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) : real(re), imag(im) &amp;#123;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Complex1 &lt;span class=&quot;keyword&quot;&gt;operator&lt;/span&gt;+(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; Complex1&amp;amp; x) &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; Complex1((real + x.real), (imag + x.imag)); &amp;#125;     	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;Complex1 &lt;span class=&quot;title&quot;&gt;c1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Complex1 c2 = c1 + &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里的im有默认值，所以只有一个需要的实参，还是属于none explicit one argument constructor。&lt;/p&gt;
+&lt;p&gt;编译器会去找是否可以将5转换为复数（5+0i），所以利用构造函数将5变为复数。&lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

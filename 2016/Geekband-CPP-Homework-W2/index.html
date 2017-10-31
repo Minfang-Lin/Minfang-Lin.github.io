@@ -1,4 +1,151 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Geekband C++面向对象高级编程 第二周作业 · 叶卡林娜的部落格</title><meta name="description" content="Geekband C++面向对象高级编程 第二周作业 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Geekband C++面向对象高级编程 第二周作业</h1><div class="post-info">Jan 30, 2016</div><div class="post-content"><h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>为 Rectangle 类实现构造函数,拷贝构造函数,赋值操作符,析构函数。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目说明：为 Rectangle 类实现构造函数,拷贝构造函数,赋值操作符,析构函数。 class Shape &amp;#123;    int no; &amp;#125;; class Point &amp;#123;    int x;    int y; &amp;#125;; class Rectangle: public Shape &amp;#123;    int width;    int height;    Po">
+<meta name="keywords" content="Cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Geekband C++面向对象高级编程 第二周作业">
+<meta property="og:url" content="http://leavesite.com/2016/Geekband-CPP-Homework-W2/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="题目说明：为 Rectangle 类实现构造函数,拷贝构造函数,赋值操作符,析构函数。 class Shape &amp;#123;    int no; &amp;#125;; class Point &amp;#123;    int x;    int y; &amp;#125;; class Rectangle: public Shape &amp;#123;    int width;    int height;    Po">
+<meta property="og:updated_time" content="2017-04-14T14:03:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekband C++面向对象高级编程 第二周作业">
+<meta name="twitter:description" content="题目说明：为 Rectangle 类实现构造函数,拷贝构造函数,赋值操作符,析构函数。 class Shape &amp;#123;    int no; &amp;#125;; class Point &amp;#123;    int x;    int y; &amp;#125;; class Rectangle: public Shape &amp;#123;    int width;    int height;    Po">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Geekband C++面向对象高级编程 第二周作业</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/Geekband-CPP-Homework-W3/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/Geekband-CPP-Homework-W1/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-W2/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&text=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&is_video=false&description=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++面向对象高级编程 第二周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-W2/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&name=Geekband C++面向对象高级编程 第二周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;为 Rectangle 类实现构造函数,拷贝构造函数,赋值操作符,析构函数。&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Shape&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; no; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Point&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; y; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Rectangle&lt;/span&gt;:&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Shape &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; width;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; height;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Point * leftUp;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rectangle(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; width, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; height, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; y);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rectangle(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; Rectangle&amp;amp; other);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rectangle&amp;amp; &lt;span class=&quot;keyword&quot;&gt;operator&lt;/span&gt;=(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; Rectangle&amp;amp; other);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ~Rectangle();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Geekband C++面向对象高级编程 第二周作业
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2016-01-30T14:20:00.000Z" itemprop="datePublished">2016-01-30</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/Cpp/">Cpp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>为 Rectangle 类实现构造函数,拷贝构造函数,赋值操作符,析构函数。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> no; </div><div class="line">&#125;; </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">int</span> y; </div><div class="line">&#125;; </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span>:</span> <span class="keyword">public</span> Shape &#123;</div><div class="line">    <span class="keyword">int</span> width;</div><div class="line">    <span class="keyword">int</span> height;</div><div class="line">    Point * leftUp;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    Rectangle(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> x, <span class="keyword">int</span> y);</div><div class="line">    Rectangle(<span class="keyword">const</span> Rectangle&amp; other);</div><div class="line">    Rectangle&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> Rectangle&amp; other);</div><div class="line">    ~Rectangle();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>原始提交代码：</p>
@@ -31,14 +178,91 @@
 <p>不过我也不知道是不是这样的问题（用32位编译）。<br>然后有同学因为学了第三周后认为父类（<code>Shape</code>）的析构函数应该设置为虚函数，从我目前代码的角度来讲因为没有抽象类是不需要的，看cpp的测试程序就可以，而且侯捷老师也讲过，以继承的方式析构时就是先调用子类，再调用父类的，编译器也会自动加。<br>下面是我把<code>leftUp</code>判断是否是<code>nullptr</code>修改后的代码：</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __RECTANGLE_H__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __RECTANGLE_H__</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> &#123;</span>                   </div><div class="line">  <span class="keyword">int</span> no_;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> order_;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> total_; </div><div class="line"><span class="keyword">public</span>:</div><div class="line">  Shape() &#123; ++total_; no_ = ++order_; &#125; </div><div class="line">  ~Shape() &#123; --total_; &#125;</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getNo</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> no_; &#125;</div><div class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ShapeTotal</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> total_; &#125;</div><div class="line"><span class="comment">//	Shape&amp; operator=(const Shape&amp; other) &#123; no_ = other.no_; return *this; &#125;</span></div><div class="line"><span class="comment">//	Shape(const Shape&amp; other) &#123;	no_ = other.no_; ++total_; ++order_; &#125;</span></div><div class="line">&#125;;  </div><div class="line"><span class="keyword">int</span> Shape::order_ = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> Shape::total_ = <span class="number">0</span>;</div><div class="line">            </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> &#123;</span></div><div class="line">  <span class="keyword">int</span> x_;</div><div class="line">  <span class="keyword">int</span> y_;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  Point(<span class="keyword">int</span> x = <span class="number">0</span>, <span class="keyword">int</span> y = <span class="number">0</span>): x_(x), y_(y) &#123; &#125;</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> x_; &#125;</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> y_; &#125;</div><div class="line">&#125;;        </div><div class="line">      </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span>:</span> <span class="keyword">public</span> Shape &#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="keyword">int</span> width_;</div><div class="line">  <span class="keyword">int</span> height_;</div><div class="line">  Point* leftUp_;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  Rectangle(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> x, <span class="keyword">int</span> y);</div><div class="line">  Rectangle(<span class="keyword">const</span> Rectangle&amp; other);</div><div class="line">  Rectangle&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> Rectangle&amp; other);</div><div class="line">  ~Rectangle(); </div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getWidth</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> width_; &#125;    </div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getHeight</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> height_; &#125;    </div><div class="line">  <span class="function">Point* <span class="title">getLeftUP</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> leftUp_; &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">inline</span></div><div class="line">Rectangle::Rectangle(<span class="keyword">int</span> width = <span class="number">0</span>, <span class="keyword">int</span> height = <span class="number">0</span>, <span class="keyword">int</span> x = <span class="number">0</span>, <span class="keyword">int</span> y = <span class="number">0</span>): width_(width), height_(height), leftUp_(<span class="keyword">new</span> Point(x,y)) &#123; &#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span></div><div class="line">Rectangle&amp; Rectangle::<span class="keyword">operator</span>=(<span class="keyword">const</span> Rectangle&amp; other) &#123;</div><div class="line"><span class="comment">//	Shape::operator=(other);</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span> == &amp;other)</div><div class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</div><div class="line">  width_ = other.width_;</div><div class="line">  height_ = other.height_;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (leftUp_ != <span class="literal">nullptr</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (other.leftUp_ != <span class="literal">nullptr</span>) &#123;  </div><div class="line">      *leftUp_ = *(other.leftUp_);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">delete</span> leftUp_;</div><div class="line">      leftUp_ = <span class="literal">nullptr</span>;</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">if</span> (other.leftUp_ != <span class="literal">nullptr</span>)&#123;</div><div class="line">      leftUp_ = <span class="keyword">new</span> Point(*(other.leftUp_));</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="keyword">return</span> *<span class="keyword">this</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span> </div><div class="line"><span class="comment">//Rectangle::Rectangle(const Rectangle&amp; other): Shape(other), width_(other.width_), height_(other.height_)  &#123;</span></div><div class="line">Rectangle::Rectangle(<span class="keyword">const</span> Rectangle&amp; other): width_(other.width_), height_(other.height_) &#123;</div><div class="line">  <span class="keyword">if</span>(other.leftUp_ != <span class="literal">nullptr</span>)</div><div class="line">    leftUp_ = <span class="keyword">new</span> Point(*(other.leftUp_));</div><div class="line">  <span class="keyword">else</span></div><div class="line">    leftUp_ = <span class="literal">nullptr</span>;	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">inline</span></div><div class="line">Rectangle::~Rectangle() &#123;</div><div class="line">  <span class="keyword">delete</span> leftUp_;</div><div class="line">  leftUp_ = <span class="literal">nullptr</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os, <span class="keyword">const</span> Rectangle&amp; rect) &#123;</div><div class="line">  os &lt;&lt; rect.getNo()             &lt;&lt; <span class="string">"\t"</span></div><div class="line">     &lt;&lt; rect.getLeftUP()-&gt;getX() &lt;&lt; <span class="string">"\t"</span></div><div class="line">     &lt;&lt; rect.getLeftUP()-&gt;getY() &lt;&lt; <span class="string">"\t"</span></div><div class="line">     &lt;&lt; rect.getWidth()          &lt;&lt; <span class="string">"\t"</span></div><div class="line">     &lt;&lt; rect.getHeight()         &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"rectangle.h"</span> </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</div><div class="line">  <span class="function">Rectangle <span class="title">r1</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span>;</div><div class="line">  Rectangle r2; </div><div class="line">  <span class="function">Rectangle <span class="title">r3</span><span class="params">(r1)</span></span>;</div><div class="line">  Rectangle r4;</div><div class="line">  r4 = r2;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Current total of shapes: "</span> &lt;&lt; Shape::ShapeTotal() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"No\tX\tY\tWidth\tHight"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; r1 &lt;&lt; r2;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; r3;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; r4;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"--------------------------------------------------"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#123;</div><div class="line">    Rectangle r5 = Rectangle(<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line">    Rectangle r6 = r3;</div><div class="line">    <span class="function">Rectangle <span class="title">r7</span><span class="params">(r2)</span></span>;</div><div class="line">    Rectangle r8;</div><div class="line">    r8 = r1;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Current total of shapes: "</span> &lt;&lt; Shape::ShapeTotal() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"No\tX\tY\tWidth\tHight"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; r1 &lt;&lt; r2 &lt;&lt; r3 &lt;&lt; r4 &lt;&lt; r5 &lt;&lt; r6 &lt;&lt; r7 &lt;&lt; r8;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"--------------------------------------------------"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="function">Rectangle <span class="title">r9</span><span class="params">(<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span></span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Current total of shapes: "</span> &lt;&lt; Shape::ShapeTotal() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"No\tX\tY\tWidth\tHight"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; r1 &lt;&lt; r2 &lt;&lt; r3 &lt;&lt; r4 &lt;&lt; r9;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<div class="tip">注意：cpp里面仍然是两种实现方式，我保留的是序号不能相同的，当然你认为序号可以是相同的话，只需要把16、17、51、74行的代码取消注释，75行代码注释掉就可以了。51行代码也放到if条件后更合理。</div></div></article></div></section><footer><div class="paginator"><a href="/2016/Geekband-CPP-Homework-W3/" class="prev">PREV</a><a href="/2016/Geekband-CPP-Homework-W1/" class="next">NEXT</a></div><div data-thread-key="2016/Geekband-CPP-Homework-W2/" data-title="Geekband C++面向对象高级编程 第二周作业" data-url="http://leavesite.com/2016/Geekband-CPP-Homework-W2/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
+<div class="tip">注意：cpp里面仍然是两种实现方式，我保留的是序号不能相同的，当然你认为序号可以是相同的话，只需要把16、17、51、74行的代码取消注释，75行代码注释掉就可以了。51行代码也放到if条件后更合理。</div>
+  </div>
+</article>
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-W2/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&text=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&is_video=false&description=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++面向对象高级编程 第二周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-W2/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&title=Geekband C++面向对象高级编程 第二周作业"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-W2/&name=Geekband C++面向对象高级编程 第二周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;为 Rectangle 类实现构造函数,拷贝构造函数,赋值操作符,析构函数。&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Shape&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; no; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Point&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; y; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Rectangle&lt;/span&gt;:&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Shape &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; width;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; height;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Point * leftUp;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rectangle(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; width, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; height, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; y);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rectangle(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; Rectangle&amp;amp; other);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rectangle&amp;amp; &lt;span class=&quot;keyword&quot;&gt;operator&lt;/span&gt;=(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; Rectangle&amp;amp; other);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ~Rectangle();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,4 +1,150 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Geekband C++ STL 第一周作业 · 叶卡林娜的部落格</title><meta name="description" content="Geekband C++ STL 第一周作业 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Geekband C++ STL 第一周作业</h1><div class="post-info">Mar 6, 2016</div><div class="post-content"><h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>给定一个 vector:v1 = [0, 0, 30, 20, 0, 0, 0, 0, 10, 0]，希望通过not_equal_to 算法找到到不为零的元素，并复制到另一个 vector: v2。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目说明：给定一个 vector:v1 = [0, 0, 30, 20, 0, 0, 0, 0, 10, 0]，希望通过not_equal_to 算法找到到不为零的元素，并复制到另一个 vector: v2。">
+<meta name="keywords" content="Cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Geekband C++ STL 第一周作业">
+<meta property="og:url" content="http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="题目说明：给定一个 vector:v1 = [0, 0, 30, 20, 0, 0, 0, 0, 10, 0]，希望通过not_equal_to 算法找到到不为零的元素，并复制到另一个 vector: v2。">
+<meta property="og:updated_time" content="2017-04-14T14:03:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekband C++ STL 第一周作业">
+<meta name="twitter:description" content="题目说明：给定一个 vector:v1 = [0, 0, 30, 20, 0, 0, 0, 0, 10, 0]，希望通过not_equal_to 算法找到到不为零的元素，并复制到另一个 vector: v2。">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Geekband C++ STL 第一周作业</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/Geekband-CPP-Homework-STL-W2/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/Geekband-CPP-Homework-W5/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&text=Geekband C++ STL 第一周作业"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&is_video=false&description=Geekband C++ STL 第一周作业"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++ STL 第一周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&name=Geekband C++ STL 第一周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;给定一个 vector:v1 = [0, 0, 30, 20, 0, 0, 0, 0, 10, 0]，希望通过not_equal_to 算法找到到不为零的元素，并复制到另一个 vector: v2。&lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Geekband C++ STL 第一周作业
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2016-03-06T02:00:00.000Z" itemprop="datePublished">2016-03-06</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/Cpp/">Cpp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>给定一个 vector:v1 = [0, 0, 30, 20, 0, 0, 0, 0, 10, 0]，希望通过not_equal_to 算法找到到不为零的元素，并复制到另一个 vector: v2。</p>
 <a id="more"></a>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>在查了<code>not_equal_to</code>用法后，写下的第一个版本：</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</div><div class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1 &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span> &#125;;</div><div class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">int</span> FIND_NUM = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i : v1) &#123;</div><div class="line">    <span class="keyword">if</span> (not_equal_to&lt;<span class="keyword">int</span>&gt;()(i, FIND_NUM)) &#123;</div><div class="line">      v2.push_back(i);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i : v2)</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -24,14 +170,90 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">copy(v2.begin(), v2.end(), ostream_iterator&lt;<span class="keyword">int</span>&gt;(<span class="built_in">cout</span>, <span class="string">"\n"</span>));</div></pre></td></tr></table></figure>
 <p>在有算法可以使用的时候，尽量使用算法，比如将v1有效的数据拷贝入v2的时候，不考虑用<code>push_back/insert</code>，因为后者相对来说效率低。</p>
 <p>C++11标准里有<code>bind()</code>可以替代原来的<code>bind1st()</code>和<code>bind2nd()</code>，所以也可以改写成下面这样：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>::placeholders;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</div><div class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1 &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span> &#125;;</div><div class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">int</span> FIND_NUM = <span class="number">0</span>;</div><div class="line">  <span class="keyword">auto</span> func = bind(not_equal_to&lt;<span class="keyword">int</span>&gt;(), _1, FIND_NUM);</div><div class="line">  copy_if(v1.begin(), v1.end(), back_inserter(v2), func);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i : v2)</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></div></article></div></section><footer><div class="paginator"><a href="/2016/Geekband-CPP-Homework-STL-W2/" class="prev">PREV</a><a href="/2016/Geekband-CPP-Homework-W5/" class="next">NEXT</a></div><div data-thread-key="2016/Geekband-CPP-Homework-STL-W1/" data-title="Geekband C++ STL 第一周作业" data-url="http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>::placeholders;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</div><div class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1 &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span> &#125;;</div><div class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</div><div class="line">  <span class="keyword">const</span> <span class="keyword">int</span> FIND_NUM = <span class="number">0</span>;</div><div class="line">  <span class="keyword">auto</span> func = bind(not_equal_to&lt;<span class="keyword">int</span>&gt;(), _1, FIND_NUM);</div><div class="line">  copy_if(v1.begin(), v1.end(), back_inserter(v2), func);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i : v2)</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&text=Geekband C++ STL 第一周作业"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&is_video=false&description=Geekband C++ STL 第一周作业"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++ STL 第一周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&title=Geekband C++ STL 第一周作业"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W1/&name=Geekband C++ STL 第一周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;给定一个 vector:v1 = [0, 0, 30, 20, 0, 0, 0, 0, 10, 0]，希望通过not_equal_to 算法找到到不为零的元素，并复制到另一个 vector: v2。&lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

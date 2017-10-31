@@ -1,4 +1,151 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 部署JavaWeb项目到蜂巢时的注意事项 · 叶卡林娜的部落格</title><meta name="description" content="部署JavaWeb项目到蜂巢时的注意事项 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">部署JavaWeb项目到蜂巢时的注意事项</h1><div class="post-info">Nov 19, 2016</div><div class="post-content"><h2 id="数据库相关配置"><a href="#数据库相关配置" class="headerlink" title="数据库相关配置"></a>数据库相关配置</h2><p>蜂巢默认没有初始密码，先通过mysql命令进入数据库管理，执行以下语句将root密码设置为123456。<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">user</span>();</div><div class="line"><span class="keyword">set</span> <span class="keyword">password</span>=<span class="keyword">password</span>(<span class="string">'123456'</span>); </div><div class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</div></pre></td></tr></table></figure></p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="数据库相关配置蜂巢默认没有初始密码，先通过mysql命令进入数据库管理，执行以下语句将root密码设置为123456。select user();set password=password(&apos;123456&apos;); flush privileges; 让root帐号获取所有访问权限。grant all on *.* to root@&apos;127.0.0.1&apos;identified by &quot;123456&quot;;">
+<meta name="keywords" content="JavaWeb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署JavaWeb项目到蜂巢时的注意事项">
+<meta property="og:url" content="http://leavesite.com/2016/depoly to honeycomb/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="数据库相关配置蜂巢默认没有初始密码，先通过mysql命令进入数据库管理，执行以下语句将root密码设置为123456。select user();set password=password(&apos;123456&apos;); flush privileges; 让root帐号获取所有访问权限。grant all on *.* to root@&apos;127.0.0.1&apos;identified by &quot;123456&quot;;">
+<meta property="og:updated_time" content="2017-04-14T14:03:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="部署JavaWeb项目到蜂巢时的注意事项">
+<meta name="twitter:description" content="数据库相关配置蜂巢默认没有初始密码，先通过mysql命令进入数据库管理，执行以下语句将root密码设置为123456。select user();set password=password(&apos;123456&apos;); flush privileges; 让root帐号获取所有访问权限。grant all on *.* to root@&apos;127.0.0.1&apos;identified by &quot;123456&quot;;">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>部署JavaWeb项目到蜂巢时的注意事项</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/jjhouCpp1114-01/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/spring-note-3/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/depoly to honeycomb/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/depoly to honeycomb/&text=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/depoly to honeycomb/&is_video=false&description=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=部署JavaWeb项目到蜂巢时的注意事项&body=Check out this article: http://leavesite.com/2016/depoly to honeycomb/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/depoly to honeycomb/&name=部署JavaWeb项目到蜂巢时的注意事项&description=&lt;h2 id=&quot;数据库相关配置&quot;&gt;&lt;a href=&quot;#数据库相关配置&quot; class=&quot;headerlink&quot; title=&quot;数据库相关配置&quot;&gt;&lt;/a&gt;数据库相关配置&lt;/h2&gt;&lt;p&gt;蜂巢默认没有初始密码，先通过mysql命令进入数据库管理，执行以下语句将root密码设置为123456。&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;user&lt;/span&gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;password&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;password&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;123456&#39;&lt;/span&gt;); &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;flush&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;privileges&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;让root帐号获取所有访问权限。&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;grant&lt;/span&gt; all &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; *.* &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; root@&lt;span class=&quot;string&quot;&gt;&#39;127.0.0.1&#39;&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;identified&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;123456&quot;&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库相关配置"><span class="toc-number">1.</span> <span class="toc-text">数据库相关配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更换maven镜像为阿里云"><span class="toc-number">2.</span> <span class="toc-text">更换maven镜像为阿里云</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决OOM"><span class="toc-number">3.</span> <span class="toc-text">解决OOM</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        部署JavaWeb项目到蜂巢时的注意事项
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2016-11-19T06:00:00.000Z" itemprop="datePublished">2016-11-19</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/JavaWeb/">JavaWeb</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="数据库相关配置"><a href="#数据库相关配置" class="headerlink" title="数据库相关配置"></a>数据库相关配置</h2><p>蜂巢默认没有初始密码，先通过mysql命令进入数据库管理，执行以下语句将root密码设置为123456。<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">user</span>();</div><div class="line"><span class="keyword">set</span> <span class="keyword">password</span>=<span class="keyword">password</span>(<span class="string">'123456'</span>); </div><div class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;</div></pre></td></tr></table></figure></p>
 <p>让root帐号获取所有访问权限。<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">grant</span> all <span class="keyword">on</span> *.* <span class="keyword">to</span> root@<span class="string">'127.0.0.1'</span><span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">"123456"</span>;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <h2 id="更换maven镜像为阿里云"><a href="#更换maven镜像为阿里云" class="headerlink" title="更换maven镜像为阿里云"></a>更换maven镜像为阿里云</h2><p>寻找maven的settings.xml目录<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">find / -name <span class="string">"settings.xml"</span></div></pre></td></tr></table></figure></p>
@@ -14,14 +161,91 @@
 <p> 在“这个位置”添加<code>JAVA_OPTS=&quot;-Xms256m -Xmx512m -Xss1024K -XX:PermSize=128m -XX:MaxPermSize=256m&quot;</code>，即</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># OS specific support.  $var _must_ be set to either true or false. </span></div><div class="line">JAVA_OPTS=<span class="string">"-Xms256m -Xmx512m -Xss1024K -XX:PermSize=128m -XX:MaxPermSize=256m"</span></div><div class="line">cygwin=<span class="literal">false</span></div><div class="line">darwin=<span class="literal">false</span></div></pre></td></tr></table></figure>
 <p>保存文件后重启tomcat服务。</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2017/jjhouCpp1114-01/" class="prev">PREV</a><a href="/2016/spring-note-3/" class="next">NEXT</a></div><div data-thread-key="2016/depoly to honeycomb/" data-title="部署JavaWeb项目到蜂巢时的注意事项" data-url="http://leavesite.com/2016/depoly to honeycomb/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+  </div>
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库相关配置"><span class="toc-number">1.</span> <span class="toc-text">数据库相关配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更换maven镜像为阿里云"><span class="toc-number">2.</span> <span class="toc-text">更换maven镜像为阿里云</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决OOM"><span class="toc-number">3.</span> <span class="toc-text">解决OOM</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/depoly to honeycomb/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/depoly to honeycomb/&text=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/depoly to honeycomb/&is_video=false&description=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=部署JavaWeb项目到蜂巢时的注意事项&body=Check out this article: http://leavesite.com/2016/depoly to honeycomb/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/depoly to honeycomb/&title=部署JavaWeb项目到蜂巢时的注意事项"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/depoly to honeycomb/&name=部署JavaWeb项目到蜂巢时的注意事项&description=&lt;h2 id=&quot;数据库相关配置&quot;&gt;&lt;a href=&quot;#数据库相关配置&quot; class=&quot;headerlink&quot; title=&quot;数据库相关配置&quot;&gt;&lt;/a&gt;数据库相关配置&lt;/h2&gt;&lt;p&gt;蜂巢默认没有初始密码，先通过mysql命令进入数据库管理，执行以下语句将root密码设置为123456。&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;user&lt;/span&gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;password&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;password&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;123456&#39;&lt;/span&gt;); &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;flush&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;privileges&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;让root帐号获取所有访问权限。&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;grant&lt;/span&gt; all &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; *.* &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; root@&lt;span class=&quot;string&quot;&gt;&#39;127.0.0.1&#39;&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;identified&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;123456&quot;&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

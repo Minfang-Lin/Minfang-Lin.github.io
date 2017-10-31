@@ -1,4 +1,150 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Geekband C++ STL 第三周作业 · 叶卡林娜的部落格</title><meta name="description" content="Geekband C++ STL 第三周作业 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Geekband C++ STL 第三周作业</h1><div class="post-info">Apr 21, 2016</div><div class="post-content"><h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>假设有个计算类Calculator，它要处理int, long, float, double等数值类型。用模板实现<code>GetLimit()</code>方法，获得每种类型的数值的上限LIMIT，比如int的上限是100，long的上限是1000，float的上限是999.99，double的上限是888.8888888等等。</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="题目说明：假设有个计算类Calculator，它要处理int, long, float, double等数值类型。用模板实现GetLimit()方法，获得每种类型的数值的上限LIMIT，比如int的上限是100，long的上限是1000，float的上限是999.99，double的上限是888.8888888等等。">
+<meta name="keywords" content="Cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Geekband C++ STL 第三周作业">
+<meta property="og:url" content="http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="题目说明：假设有个计算类Calculator，它要处理int, long, float, double等数值类型。用模板实现GetLimit()方法，获得每种类型的数值的上限LIMIT，比如int的上限是100，long的上限是1000，float的上限是999.99，double的上限是888.8888888等等。">
+<meta property="og:updated_time" content="2017-04-14T14:03:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekband C++ STL 第三周作业">
+<meta name="twitter:description" content="题目说明：假设有个计算类Calculator，它要处理int, long, float, double等数值类型。用模板实现GetLimit()方法，获得每种类型的数值的上限LIMIT，比如int的上限是100，long的上限是1000，float的上限是999.99，double的上限是888.8888888等等。">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Geekband C++ STL 第三周作业</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/pharmacochemistry-w2/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/Geekband-CPP-Homework-STL-W2/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&text=Geekband C++ STL 第三周作业"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&is_video=false&description=Geekband C++ STL 第三周作业"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++ STL 第三周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&name=Geekband C++ STL 第三周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;假设有个计算类Calculator，它要处理int, long, float, double等数值类型。用模板实现&lt;code&gt;GetLimit()&lt;/code&gt;方法，获得每种类型的数值的上限LIMIT，比如int的上限是100，long的上限是1000，float的上限是999.99，double的上限是888.8888888等等。&lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Geekband C++ STL 第三周作业
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2016-04-21T12:15:00.000Z" itemprop="datePublished">2016-04-21</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/Cpp/">Cpp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="题目说明："><a href="#题目说明：" class="headerlink" title="题目说明："></a>题目说明：</h2><p>假设有个计算类Calculator，它要处理int, long, float, double等数值类型。用模板实现<code>GetLimit()</code>方法，获得每种类型的数值的上限LIMIT，比如int的上限是100，long的上限是1000，float的上限是999.99，double的上限是888.8888888等等。</p>
 <a id="more"></a>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>其实我不是特别理解这道题目的意思，大概分析了一下可能是这样的，首先有一个叫做<code>Calculator</code>的类，顾名思义它是用来做计算用的（这题没有要求我们实现计算的功能），<code>Calculator</code>类里面有一个成员函数叫做<code>GetLimit</code>，返回的是对应数值类型的值。由于<code>LIMIT</code>的数据类型以及值都是需要根据实际数据类型确定的，所以<code>LIMIT</code>不是<code>Calculator</code>的一个成员常量。为了处理不同的数值类型，我另外写了一个<code>CalculatorTraits</code>的类，里面定义了不同数值类型对应的返回值及<code>LIMIT</code>的值。代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CalculatorTraits</span> &#123;</span> &#125;;</div><div class="line"> </div><div class="line"><span class="keyword">template</span>&lt;&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CalculatorTraits</span>&lt;int&gt; &#123;</span></div><div class="line">    <span class="keyword">typedef</span> <span class="keyword">int</span> ReturnType;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> ReturnType LIMIT = <span class="number">100</span>;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">template</span>&lt;&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CalculatorTraits</span>&lt;long&gt; &#123;</span></div><div class="line">    <span class="keyword">typedef</span> <span class="keyword">long</span> ReturnType;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> ReturnType LIMIT = <span class="number">1000</span>;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">template</span>&lt;&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CalculatorTraits</span>&lt;float&gt; &#123;</span></div><div class="line">    <span class="keyword">typedef</span> <span class="keyword">float</span> ReturnType;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> ReturnType LIMIT = <span class="number">999.99</span>;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">template</span>&lt;&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CalculatorTraits</span>&lt;double&gt; &#123;</span></div><div class="line">    <span class="keyword">typedef</span> <span class="keyword">double</span> ReturnType;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> ReturnType LIMIT = <span class="number">888.888888</span>;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Calculator</span> &#123;</span></div><div class="line">    <span class="keyword">typename</span> CalculatorTraits&lt;T&gt;::<span class="function">ReturnType <span class="title">GetLimit</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> CalculatorTraits&lt;T&gt;::LIMIT;</div><div class="line">    &#125;   </div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    Calculator&lt;<span class="keyword">int</span>&gt; c1;</div><div class="line">    Calculator&lt;<span class="keyword">long</span>&gt; c2;</div><div class="line">    Calculator&lt;<span class="keyword">float</span>&gt; c3;</div><div class="line">    Calculator&lt;<span class="keyword">double</span>&gt; c4;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; c1.GetLimit() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; c2.GetLimit() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; c3.GetLimit() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; c4.GetLimit() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><code>CalculatorTraits</code>里面的<code>LIMIT</code>如果不写<code>static</code>是局部变量，不能被外部调用。静态成员在类内初始化时必须加上<code>const</code>（只适用于<code>int</code>类型，包括<code>enum</code>），<code>double</code>类型在使用TDM-GCC 4.9.2时会报错，可以通过把<code>const</code>改成<code>constexpr</code>解决。或者在类外写，如以<code>int</code>为例：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;&gt;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CalculatorTraits</span>&lt;int&gt; &#123;</span></div><div class="line">    <span class="keyword">typedef</span> <span class="keyword">int</span> ReturnType;</div><div class="line">    <span class="keyword">static</span> ReturnType LIMIT;</div><div class="line">&#125;;</div><div class="line">CalculatorTraits&lt;<span class="keyword">int</span>&gt;::ReturnType CalculatorTraits&lt;<span class="keyword">int</span>&gt;::LIMIT = <span class="number">100</span>;</div></pre></td></tr></table></figure></p>
@@ -6,14 +152,90 @@
 <p>在群里谈到了<code>limits</code>，可以使用<code>numeric_limits&lt;int&gt;::max()</code>返回int类型的最大值，对于之前的程序，只需要加上头文件<code>#include &lt;limits&gt;</code>，然后改成<code>static constexpr ReturnType LIMIT = numeric_limits&lt;int&gt;::max();</code>之类的就可以了。</p>
 <p>在讲解的时候，文杰老师提了出题的用意，有两点：第一是希望学员会使用<code>traits</code>表达类型信息，因为C++没有C#/Java中类似类型的判断，比如C#里有<code>if (type is SomeType) { … }</code>，但C++没有。这个时候考虑用<code>traits</code>表达；第二，希望学员注意类似<code>typename CalculatorTraits&lt;T&gt;::ReturnType</code>的返回类型，不要觉得奇怪，是模板中常用的。</p>
 <p>以下是GeekBandSuyan20160307的实现方法：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Calculator</span> &#123;</span></div><div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">GetLimit</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> T(<span class="number">65</span>); &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;&gt; <span class="keyword">int</span> Calculator::GetLimit() <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="keyword">int</span>(<span class="number">100</span>); &#125;</div><div class="line"><span class="keyword">template</span>&lt;&gt; <span class="keyword">long</span> Calculator::GetLimit() <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="keyword">long</span>(<span class="number">1000</span>); &#125;</div><div class="line"><span class="keyword">template</span>&lt;&gt; <span class="keyword">float</span> Calculator::GetLimit() <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="keyword">float</span>(<span class="number">999.99</span>); &#125;</div><div class="line"><span class="keyword">template</span>&lt;&gt; <span class="keyword">double</span> Calculator::GetLimit() <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="keyword">double</span>(<span class="number">888.8888888</span>); &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    Calculator ca;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Limit of int : "</span> &lt;&lt; ca.GetLimit&lt;<span class="keyword">int</span>&gt;() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Limit of long : "</span> &lt;&lt; ca.GetLimit&lt;<span class="keyword">long</span>&gt;() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Limit of float : "</span> &lt;&lt; ca.GetLimit&lt;<span class="keyword">float</span>&gt;() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Limit of double : "</span> &lt;&lt; ca.GetLimit&lt;<span class="keyword">double</span>&gt;() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Limit of char : "</span> &lt;&lt; ca.GetLimit&lt;<span class="keyword">char</span>&gt;() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/pharmacochemistry-w2/" class="prev">PREV</a><a href="/2016/Geekband-CPP-Homework-STL-W2/" class="next">NEXT</a></div><div data-thread-key="2016/Geekband-CPP-Homework-STL-W3/" data-title="Geekband C++ STL 第三周作业" data-url="http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
 
-</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
+  </div>
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目说明："><span class="toc-number">1.</span> <span class="toc-text">题目说明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">2.</span> <span class="toc-text">解答</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&text=Geekband C++ STL 第三周作业"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&is_video=false&description=Geekband C++ STL 第三周作业"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Geekband C++ STL 第三周作业&body=Check out this article: http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&title=Geekband C++ STL 第三周作业"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2016/Geekband-CPP-Homework-STL-W3/&name=Geekband C++ STL 第三周作业&description=&lt;h2 id=&quot;题目说明：&quot;&gt;&lt;a href=&quot;#题目说明：&quot; class=&quot;headerlink&quot; title=&quot;题目说明：&quot;&gt;&lt;/a&gt;题目说明：&lt;/h2&gt;&lt;p&gt;假设有个计算类Calculator，它要处理int, long, float, double等数值类型。用模板实现&lt;code&gt;GetLimit()&lt;/code&gt;方法，获得每种类型的数值的上限LIMIT，比如int的上限是100，long的上限是1000，float的上限是999.99，double的上限是888.8888888等等。&lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Minfang Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
