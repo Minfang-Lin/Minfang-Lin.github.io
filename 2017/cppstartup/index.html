@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> C++程序的生前死后 · 叶卡林娜的部落格</title><meta name="description" content="C++程序的生前死后 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">C++程序的生前死后</h1><div class="post-info">May 27, 2017</div><div class="post-content"><p>Startup Code的作用：</p>
+<ul>
+<li>使得C run-time library（CRT）正确地被初始化。</li>
+<li>静态对象的C++构造函数能够正确执行。</li>
+</ul>
+<p>在默认情况下，CRT的函数名称是下面这样的。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Function name</th>
+<th style="text-align:center">Default for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">①</td>
+<td style="text-align:center">mainCRTStartup(or<br>wmainCRTStartup)</td>
+<td style="text-align:center">An application using /SUBSYSTEM:CONSILE;<br>calls main(or wmain)</td>
+</tr>
+<tr>
+<td style="text-align:center">②</td>
+<td style="text-align:center">WinMainCRTStartup(or<br>wWinMainCRTStartup)</td>
+<td style="text-align:center">An application using /SUBSYSTEM:WINDOWS;<br>calls WinMain(or wWinMain), which must be<br>defined with __stdcall</td>
+</tr>
+<tr>
+<td style="text-align:center">③</td>
+<td style="text-align:center">_DllMainCRTStartup</td>
+<td style="text-align:center">A Dll; calls DllMain, which must be defined<br>with __standcall, if it exists</td>
+</tr>
+</tbody>
+</table>
+<p>对于C/C++在main执行之前都需要先执行启动代码（startup code），而main函数其实是在启动码函数中调用的。</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/python-w1/" class="prev">PREV</a><a href="/2017/web-security-02/" class="next">NEXT</a></div><div data-thread-key="2017/cppstartup/" data-title="C++程序的生前死后" data-url="http://leavesite.com/2017/cppstartup/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

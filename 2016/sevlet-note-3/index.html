@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Servlet学习笔记（三） · 叶卡林娜的部落格</title><meta name="description" content="Servlet学习笔记（三） - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Servlet学习笔记（三）</h1><div class="post-info">Oct 2, 2016</div><div class="post-content"><h2 id="请求转发"><a href="#请求转发" class="headerlink" title="请求转发"></a>请求转发</h2><p>forward：将当前的request和response对象交给指定的web组件处理。一次请求，一次响应。浏览器的地址不会变。</p>
+<p>RequestDispatcher</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 通过HttpServletRequest获取转发对象，可以使用绝对路径或者相对路径</span></div><div class="line">RequestDispatcher rd = request.getRequestDispatcher(<span class="string">"/forwardExample"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 传入对应Servlet名称</span></div><div class="line">rd = <span class="keyword">this</span>.getServletContext().getNamedDispatcher(<span class="string">"ServletName"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 通过getServletContext获取转发对象，只能填绝对路径</span></div><div class="line">rd = <span class="keyword">this</span>.getServletContext().getRequestDispatcher(<span class="string">"/forwardExample"</span>);</div><div class="line"></div><div class="line">rd.forward(request, response);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="请求重定向"><a href="#请求重定向" class="headerlink" title="请求重定向"></a>请求重定向</h2><p>sendRedirect：通过response对象发送给浏览器一个新url地址，让其重新请求。两次请求，两次响应。浏览器的地址会改变。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 使用相对路径</span></div><div class="line">response.sendRedirect(<span class="string">"redirectExample"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 使用相对路径</span></div><div class="line">response.sendRedirect(request.getContextPath()+<span class="string">"/redirectExample"</span>);</div></pre></td></tr></table></figure>
+<h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><p>过滤请求与响应，自定义过滤规则，用于对用户请求进行预处理，和对请求响应进行后处理的web应用组件。</p>
+<p>过滤器应用场景：用户认证、编解码处理、数据压缩处理。</p>
+<p>过滤器的生命周期：init -&gt; doFilter -&gt; destory</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"filter destory method"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)</span></span></div><div class="line"><span class="function">			<span class="keyword">throws</span> IOException, ServletException </span>&#123;</div><div class="line">        System.out.println(<span class="string">"filter doFilter method"</span>);</div><div class="line">        HttpServletRequest req = (HttpServletRequest) arg0;</div><div class="line">        HttpSession session = req.getSession();</div><div class="line">        <span class="keyword">if</span>(session.getAttribute(<span class="string">"userName"</span>)==<span class="keyword">null</span>)&#123;</div><div class="line">            HttpServletResponse res = (HttpServletResponse) arg1;</div><div class="line">            res.sendRedirect(<span class="string">"../index.html"</span>);</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line">            <span class="comment">// 传递到下一个过滤器或者请求资源的Servlet</span></div><div class="line">            arg2.doFilter(arg0, arg1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig arg0)</span> <span class="keyword">throws</span> ServletException </span>&#123;</div><div class="line">        System.out.println(<span class="string">"filter init method"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>TestFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.netease.hello.TestFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>111<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>222<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>TestFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h2><p>监听事件发生，在事件发生前后能够做出相应处理的web应用组件。</p>
+<h4 id="监听器的分类"><a href="#监听器的分类" class="headerlink" title="监听器的分类"></a>监听器的分类</h4><ul>
+<li>监听应用程序环境（ServletContext）<ul>
+<li>ServletContextListener</li>
+<li>ServletContextAttributeListener</li>
+</ul>
+</li>
+<li>监听用户请求对象（ServletRequest）<ul>
+<li>ServletRequestListener</li>
+<li>ServletRequestAttributeListener</li>
+</ul>
+</li>
+<li>监听用户会话对象（HTTPSession）<ul>
+<li>HTTPSessionListener</li>
+<li>HTTPSessionAttributeListener</li>
+<li>HTTPSessionActivationListener</li>
+<li>HTTPSessionBindingListener</li>
+</ul>
+</li>
+</ul>
+<p>监听器的应用场景：应用统计、任务触发…</p>
+<p>创建顺序：监听器 -&gt; 过滤器 -&gt; Servlet</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>com.netease.hello.TestListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="并发处理"><a href="#并发处理" class="headerlink" title="并发处理"></a>并发处理</h2><ul>
+<li>变量线程安全<ul>
+<li>参数变量本地化</li>
+<li>使用同步快synchronized</li>
+</ul>
+</li>
+<li>属性的线程安全<ul>
+<li>ServletContext线程不安全</li>
+<li>HttpSession理论上线程安全</li>
+<li>ServletRequest线程安全</li>
+</ul>
+</li>
+<li>避免在Servlet中创建线程</li>
+<li>多个Servlet访问外部对象加锁 </li>
+</ul>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/database-note-1/" class="prev">PREV</a><a href="/2016/cookie-and-session/" class="next">NEXT</a></div><div data-thread-key="2016/sevlet-note-3/" data-title="Servlet学习笔记（三）" data-url="http://leavesite.com/2016/sevlet-note-3/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

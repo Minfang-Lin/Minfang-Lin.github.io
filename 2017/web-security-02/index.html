@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Web安全学习笔记（2） · 叶卡林娜的部落格</title><meta name="description" content="Web安全学习笔记（2） - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Web安全学习笔记（2）</h1><div class="post-info">May 19, 2017</div><div class="post-content"><h2 id="SDL介绍"><a href="#SDL介绍" class="headerlink" title="SDL介绍"></a>SDL介绍</h2><p>SDL（Security Development Lifecycle，安全开发生产周期），提倡Secure at the Source，最早来源于微软。</p>
+<p>为什么要用SDL？</p>
+<ol>
+<li>可以减少安全漏洞和隐私问题的数量</li>
+<li>降低残留漏洞的安全风险，降低安全漏洞修复成本</li>
+</ol>
+<p>规范公司Web应用开发流程，包括：安全需求分析、代码检查、安全测试等等。</p>
+<p>SDL流程的组成阶段：</p>
+<ol>
+<li>培训：让所有相关的工作人员具有相关的技能，比如对于开发人员来说需要他们了解安全编码，测试人员则偏重安全测试，运营人员偏重安全意识教育和运营；</li>
+<li>需求：从用户角度确定产品需要满足哪些功能，其中也包括安全需求（比如应用的认证是通过简单的账号密码、什么加密方式，如何设置权限）、对于质量/BUG数量的要求、安全和隐私风险的评估；</li>
+<li>设计：将各个功能分解和规划，并设计相应的实现方式。特别是对于安全和隐私需要设计好需求分析，防止后期多次变更。从应用本身的设计出发，尽可能减少可被入侵或攻击的漏洞点，比如使用最小权限原则、加固系统、关闭一些不需要的服务、卸载不需要的组件。同时也要了解外在可能存在的一些攻击，做到知己知彼；</li>
+<li>实施：将前期规划通过代码实现。这个阶段中程序员需要和安全人员有良好的沟通，包括如何正确使用IDE，安全人员需要提供不安全的函数、api等数据给程序员，让他们在编程过程中弃用这些有安全隐患的内容。同时利用现成工具或人工进行静态分析；</li>
+<li>验证：测试人员对于功能进行验证和测试。使用动态分析对于前面静态分析的内容进行补充，用于测试环境验证程序的安全性。通过模糊测试（使用大量的输入看输出）的方式判断是否存在安全漏洞。重新进行威胁建模以及攻击面分析，而验证由于需求变更导致新出现的安全问题；</li>
+<li>发布：验证之后产品需要上线交付，可以建立安全事件响应计划，对于突发情况的处理进行演练。进行最终的安全评析，在应用上线之前检查所有执行的安全活动，得到最终的安全结果，用于判断和上报给管理层。同时发布存档，存档有利于对于应急响应和产品升级提供帮助；</li>
+<li>响应：产品上线后对于各类安全事件或其他事件进行响应处理。</li>
+</ol>
+<h2 id="漏洞和事件处理"><a href="#漏洞和事件处理" class="headerlink" title="漏洞和事件处理"></a>漏洞和事件处理</h2><p>为什么要发现安全问题？</p>
+<p>很多公司、企业都有多种Web应用或服务开放到互联网，一旦开放到互联网就会遭到全球黑客的扫描和攻击，这些安全问题就像是不定时炸弹，不清楚存在哪些安全问题的话随时会危害到企业的安全。一旦Web应用被攻陷，植入后门后，服务器就会变成入侵者的前哨站，入侵者通过入侵的服务器作为跳板，进一步进行内网渗透，导致整个内网的沦陷。</p>
+<p>企业如何发现这些隐蔽炸弹呢？</p>
+<ul>
+<li>前期避免：在项目接入初期，通过安全需求分析，提前发现安全问题。比如从开发所用的编程语言或是框架是否经常会有爆出安全漏洞，如果是，那就尽量避免使用。对于一些敏感信息需要加salt后再加密以防止被轻易破解。对于有上传功能的也要注意由于上传漏洞导致被植入后门等事件的发生。</li>
+<li>中期发现：通过扫描器以及人工测试的方式发现安全问题。人工测试主要针对比如触发点不定的存储型XSS漏洞、越权型漏洞、业务逻辑漏洞等扫描器难以发现或无法发现的漏洞。项目上线后进行监控，对于网络层和主机层进行检测。网络层检测是通过对于网络流量的分析，检测入侵行为。主机层的检测则是通过在主机上安装程序，搜集文件、进程、日志等信息，进行综合分析来检测入侵行为。同时也可以通过建立SRC（Security Response Center，安全应急响应中心）或是和漏洞平台合作，让安全爱好者（白帽子）来发现问题。特殊情况下也可以跟黑产卧底或是国家执法部门等进行合作。</li>
+<li>后期补救</li>
+</ul>
+<h2 id="安全运营概述"><a href="#安全运营概述" class="headerlink" title="安全运营概述"></a>安全运营概述</h2><p>企业如何持续保障安全？</p>
+<p>安全运营贯穿在整个安全体系之中，安全运营需要让端口扫描、漏洞扫描、代码白盒扫描等发现方式变成一种周期性的任务，内部的安全流程持续的修正改进，才能符合产品的研发、运营。在外部不断发生变化的过程当中，安全人员、程序员、测试人员等需要不断沟通和合作以应对黑产的攻击。</p>
+<p>安全运营有哪些工作？</p>
+<p>安全运营可以通过漏洞扫描、渗透测试、代码审计等方式发现和修复安全问题，比如入侵检测系统、Web应用防火墙、防Doss设备等防御工作防范未然或在事后进行快速应急响应。推动SDL流程以减少漏洞问题，降低维护成本。由于SDL流程在实际情况中可能难以推行，需要领导层的支持，同时安全人员需要给其他开发及测试人员灌输安全概念，并且利用一些安全问题的契机来推动SDL落地。</p>
+<p>安全工作包括对外工作和对内工作。对内工作包括周期性的安全扫描，如对于新上线的功能及时扫描，对于重要端口每日扫描，对于0day漏洞及时扫描等。每天需要关注业内新的安全事件，并对其进行评估，并提前部署公司的防御方案。同时安全人员也需要对公司的系统有详细的了解，以提前提供解决方案，比如使用WAF这样的虚拟补丁。并且制定应急响应的流程，以应对突发的安全问题。对外工作包括利用IM工具、邮件、论坛等搜集用户反馈，紧跟安全圈，参加他们的活动，融入圈子进行合作。</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/cppstartup/" class="prev">PREV</a><a href="/2017/web-security-01/" class="next">NEXT</a></div><div data-thread-key="2017/web-security-02/" data-title="Web安全学习笔记（2）" data-url="http://leavesite.com/2017/web-security-02/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Servlet学习笔记（二） · 叶卡林娜的部落格</title><meta name="description" content="Servlet学习笔记（二） - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Servlet学习笔记（二）</h1><div class="post-info">Sep 27, 2016</div><div class="post-content"><p>Cookie将会话数据保存在浏览器客户端。<br>Session将会话数据保存在服务器端。</p>
+<p>Cookie工作流程：</p>
+<ol>
+<li>客户端（浏览器）向服务端发送请求；</li>
+<li>服务端根据业务需求生成对应的Cookie对象，把需要保存的业务数据保存在Cookie对象中；</li>
+<li>把Cookie对象放到HTTP响应头中，发还到客户端（浏览器）；</li>
+<li>浏览器接收到请求响应，将Cookie保存；</li>
+<li>当客户端（浏览器）再次访问该网站时，就会把Cookie放到请求中，一起发到服务端；</li>
+<li>服务端从请求中取出Cookie，获取到对应的数据，做出相应的响应。</li>
+</ol>
+<a id="more"></a>
+<p>Cookie默认会话结束后失效，可以通过setMaxAge设置cookie有效期</p>
+<p>Cookie有大小和数量的限制，一般来说每个站点最多保存20个cookie，每个cookie的大小限制一般在4k以内。由于HTTP请求中的cookie是明文传递，存在数据安全性问题。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></div><div class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</div><div class="line">    request.setCharacterEncoding(<span class="string">"UTF-8"</span>);</div><div class="line">    response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</div><div class="line">    String name = request.getParameter(<span class="string">"name1"</span>);</div><div class="line">    String pwd = request.getParameter(<span class="string">"pwd1"</span>);</div><div class="line"></div><div class="line">    Cookie userNameCookie = <span class="keyword">new</span> Cookie(<span class="string">"userName"</span>, name);</div><div class="line">    Cookie pwdCookie = <span class="keyword">new</span> Cookie(<span class="string">"pwd"</span>, pwd);</div><div class="line">    response.addCookie(userNameCookie);</div><div class="line">    response.addCookie(pwdCookie);</div><div class="line"></div><div class="line">    Cookie[] cookies = request.getCookies();</div><div class="line">    <span class="keyword">if</span> (cookies != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (Cookie cookie : cookies) &#123;</div><div class="line">            <span class="keyword">if</span> (cookie.getName().equals(<span class="string">"userNmae"</span>)) &#123;</div><div class="line">                name = cookie.getValue();</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (cookie.getName().equals(<span class="string">"pwd"</span>)) &#123;</div><div class="line">                pwd = cookie.getValue();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Session工作流程：</p>
+<ol>
+<li>浏览器发出请求到服务器；</li>
+<li>服务器会根据需求生成Session对象，并且给这个Session对象一个唯一的ID，一个ID对应一个Session对象；</li>
+<li>服务器把需要记录的数据封装到这个Session对象里，然后把这个Session对象保存下来；</li>
+<li>服务器把这个Session对象的编号放到一个Cookie里，随着响应发送给浏览器；</li>
+<li>浏览器接收到这个Cookie就会保存下来；</li>
+<li>当下一次浏览器再次请求该服务器服务，就会发送该Cookie；</li>
+<li>服务器得到这个Cookie，取出它的内容，它的内容就是一个Session的ID；</li>
+<li>凭借这个Session编号找到对应的Session对象，然后利用该Session对象把保存的数据取出。</li>
+</ol>
+<p>Session默认有效期为30分钟，可以通过<code>setMaxInactiveInterval</code>设置有效期（优先级高于通过部署描述符设置），也可以通过部署描述符配置有效期。通过<code>invalidate</code>使Session失效。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">String pwd = request.getParameter(<span class="string">"pwd1"</span>);</div><div class="line"></div><div class="line">HttpSession session = request.getSession();</div><div class="line">String username = (String) session.getAttribute(<span class="string">"userName"</span>);</div><div class="line"><span class="keyword">if</span> (username != <span class="keyword">null</span>) &#123;</div><div class="line">    System.out.println(<span class="string">"second login"</span>);</div><div class="line">&#125;</div><div class="line">session.setAttribute(<span class="string">"userName"</span>, name);</div><div class="line">session.setAttribute(<span class="string">"pwd"</span>, pwd);</div></pre></td></tr></table></figure>
+<p>通过<code>setMaxInactiveInterval</code>设置有效期：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 单位为秒</span></div><div class="line">session.setMaxInactiveInterval(<span class="number">2</span>*<span class="number">60</span>);</div></pre></td></tr></table></figure>
+<p>通过部署描述符配置有效期：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 单位为分钟 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>2<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Cookie与Session的比较</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">.</th>
+<th style="text-align:center">Cookie</th>
+<th style="text-align:center">Session</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数据储存</td>
+<td style="text-align:center">客户端</td>
+<td style="text-align:center">服务器端</td>
+</tr>
+<tr>
+<td style="text-align:center">安全性</td>
+<td style="text-align:center">以明文方式存放在客户端，相对安全性较弱，但可以通过加密方式存放</td>
+<td style="text-align:center">存放在服务器端内存中，相对安全性较强</td>
+</tr>
+<tr>
+<td style="text-align:center">生命周期</td>
+<td style="text-align:center">累计时间，到点失效</td>
+<td style="text-align:center">间隔时间，从最后一次访问开始计时，与cookie不同的是可以直接调用API使得session失效</td>
+</tr>
+<tr>
+<td style="text-align:center">使用原则</td>
+<td style="text-align:center">有限制，每个站点最多20个cookie，每个最大4k</td>
+<td style="text-align:center">存放在服务器端，会占用服务器内存，不建议存放过多过大的对象</td>
+</tr>
+</tbody>
+</table>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/sevlet-note-3/" class="prev">PREV</a><a href="/2016/sevlet-note/" class="next">NEXT</a></div><div data-thread-key="2016/cookie-and-session/" data-title="Servlet学习笔记（二）" data-url="http://leavesite.com/2016/cookie-and-session/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

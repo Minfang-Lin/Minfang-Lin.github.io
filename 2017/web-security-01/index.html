@@ -1,0 +1,138 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Web安全学习笔记（1） · 叶卡林娜的部落格</title><meta name="description" content="Web安全学习笔记（1） - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Web安全学习笔记（1）</h1><div class="post-info">Mar 25, 2017</div><div class="post-content"><h2 id="Web介绍"><a href="#Web介绍" class="headerlink" title="Web介绍"></a>Web介绍</h2><h3 id="Web发展史"><a href="#Web发展史" class="headerlink" title="Web发展史"></a>Web发展史</h3><h4 id="什么是Web？"><a href="#什么是Web？" class="headerlink" title="什么是Web？"></a>什么是Web？</h4><p>Web的本意指网，这里指的是万维网（World Wide Web）。它是由许多互相链接的超文本组成的，通过互联网访问。Web是非常普遍的互联网应用，每天都有数以亿万计的Web资源，如图片、html页面、音频、视频等，从全世界的Web服务器快速的传递到我们的浏览器上。</p>
+<h4 id="Web1-0与Web2-0"><a href="#Web1-0与Web2-0" class="headerlink" title="Web1.0与Web2.0"></a>Web1.0与Web2.0</h4><ul>
+<li>Web1.0以个人网站、门户站点为主，主要使用大量静态页面，提供信息给用户。只能阅读，不能添加或修改。常见的安全问题包括SQL注入、文件包含、命令执行、上传漏洞、挂马、暗链等。主要危害Web服务器。</li>
+<li>Web2.0如微博、博客，可以进行人与人之间的互动。常见的安全问题包括XSS、CSRF、数据劫持、URL跳转、钓鱼、框架漏洞、逻辑漏洞等。逐渐开始针对上网的Web用户。</li>
+</ul>
+<p>Web安全问题数量迅速增长，种类迅速增多，从危害服务器逐渐转变为针对Web用户。</p>
+<h3 id="Web流程"><a href="#Web流程" class="headerlink" title="Web流程"></a>Web流程</h3><ol>
+<li>用户打开浏览器</li>
+<li>在浏览器中输入URL</li>
+<li>浏览器向服务器发送请求</li>
+<li>Web服务器收到请求后做相应处理（如果有数据相关操作，服务器先会与数据库进行交互）</li>
+<li>服务器处理完之后会返回处理结果</li>
+<li>浏览器收到处理结果后将页面展示给用户</li>
+</ol>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p>通过域名获取Web服务器的IP地址（DNS解析），通过解析到的IP地址访问Web服务器。</p>
+<h2 id="Web通信"><a href="#Web通信" class="headerlink" title="Web通信"></a>Web通信</h2><h3 id="URL协议"><a href="#URL协议" class="headerlink" title="URL协议"></a>URL协议</h3><p>URL（Uniform Resource Locator，统一资源定位符），支持多种协议，如HTTP、FTP等。URL用于定位服务器资源。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">schema://host[:port#]/path/.../[?query-string][#anchor]</div><div class="line">  ①       ②    ③     ④            ⑤           ⑥</div><div class="line">  </div><div class="line">① schema：底层协议，例如http、https、ftp</div><div class="line">② host：我们要访问的服务器域名或IP地址</div><div class="line">③ port：服务器端口号，HTTP默认端口是80（可省略），其他端口要指明</div><div class="line">④ path：访问资源的路径</div><div class="line">⑤ ?query-string：发送给http服务器的数据</div><div class="line">⑥ #anchor：锚点，一般表示页面的指定位置</div></pre></td></tr></table></figure>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>超文本传输协议（Hyper Text Transfer Protocol），它是Web通信时使用的协议，是Web的基础，也是互联网上应用最广泛的一种协议。</p>
+<h2 id="常见Web安全事件"><a href="#常见Web安全事件" class="headerlink" title="常见Web安全事件"></a>常见Web安全事件</h2><ol>
+<li>“钓鱼”</li>
+<li>“篡改”网页<ul>
+<li>使用搜索引擎查找被黑的网站<ol>
+<li>使用关键词：Hacked by</li>
+<li>使用搜索引擎语法：<ul>
+<li>Intitle:keyword 标题中含有关键词的网页</li>
+<li>Intext:keyword 正文中含有关键词的网页</li>
+<li>Site:domain 在某个域名和子域名下的网页</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>“暗链”：它是隐藏在网站中的链接，不能被用户点击，主要用来提高植入暗链在搜索引擎中的排名</li>
+<li>Webshell：通过建立“传送门”的机制，上传一个后门，这个后门是可执行环境（该环境可以使用不同的语言，如asp、c++等），让我们可以随时随地回到被入侵的服务器上，进行恶意操作。</li>
+</ol>
+<h2 id="常见Web漏洞"><a href="#常见Web漏洞" class="headerlink" title="常见Web漏洞"></a>常见Web漏洞</h2><h3 id="1-XSS"><a href="#1-XSS" class="headerlink" title="1.XSS"></a>1.XSS</h3><p>全称为Cross Site Script（跨站脚本），属于客户端漏洞，常见的危害有盗取用户信息、钓鱼、制造蠕虫等等。它本质上是一种针对前端语言的注入。黑客通过“HTML注入”篡改网页，插入恶意脚本（XSS脚本），当用户在浏览网页时，实现控制用户浏览器行为的一种攻击方式。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">XSS类型</th>
+<th style="text-align:left">存储型</th>
+<th style="text-align:left">反射型</th>
+<th style="text-align:left">DOM型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">触发过程</td>
+<td style="text-align:left">1.黑客制造XSS脚本<br>2.正常用户访问携带<br>XSS脚本的页面</td>
+<td style="text-align:left">正常用户访问携带XSS<br>脚本的页面</td>
+<td style="text-align:left">正常用户访问携带XSS<br>脚本的页面</td>
+</tr>
+<tr>
+<td style="text-align:left">数据存储</td>
+<td style="text-align:left">数据库</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:left">URL</td>
+</tr>
+<tr>
+<td style="text-align:left">谁来输出</td>
+<td style="text-align:left">后端WEB应用程序</td>
+<td style="text-align:left">后端WEB应用程序</td>
+<td style="text-align:left">前端JavaScript</td>
+</tr>
+<tr>
+<td style="text-align:left">输出位置</td>
+<td style="text-align:left">HTTP响应中</td>
+<td style="text-align:left">HTTP响应中</td>
+<td style="text-align:left">动态构造的DOM节点中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-CSRF"><a href="#2-CSRF" class="headerlink" title="2.CSRF"></a>2.CSRF</h3><p>全称为Cross-site request forgery（跨站请求伪造），属于客户端漏洞，常见的危害有执行恶意操作（“被转账”，“被发垃圾评论”等），制造蠕虫。黑客利用用户已登录的身份，在用户毫不知情的情况下，以用户的名义完成非法操作。</p>
+<h3 id="3-点击劫持"><a href="#3-点击劫持" class="headerlink" title="3.点击劫持"></a>3.点击劫持</h3><p>通常利用iframe或其他标签如flash等实现，隐蔽性较高，它也被称为“UI-覆盖攻击”，即在一个网站背后嵌套一个网站，以达到骗取用户操作的目的。</p>
+<h3 id="4-URL跳转"><a href="#4-URL跳转" class="headerlink" title="4.URL跳转"></a>4.URL跳转</h3><p>借助未验证的URL跳转，将应用程序引导到不安全的第三方区域，从而导致安全问题。可以通过Header头、JavaScript、META标签实现跳转。</p>
+<h3 id="5-SQL注入"><a href="#5-SQL注入" class="headerlink" title="5.SQL注入"></a>5.SQL注入</h3><p>由于数据与代码未分离，数据当做了代码来执行。它可以获取数据库信息（包括管理员后台用户名、密码以及数据库中的敏感信息等）、获取服务器权限、植入WebShell、读取服务器敏感数据。</p>
+<h3 id="6-命令注入"><a href="#6-命令注入" class="headerlink" title="6.命令注入"></a>6.命令注入</h3><p>Windows命令行中的命令：</p>
+<ul>
+<li>&amp; 为命令拼接符，将依次执行拼接的命令。</li>
+<li>| 为管道符，将前面命令的输出作为后面命令的注入。</li>
+</ul>
+<p>要实现命令注入，需要满足三个条件：1.调用可执行系统命令的函数（如PHP中的system、exec、shell_exec、eval等）；2.函数或函数的参数可控；3.拼接注入命令。</p>
+<h3 id="7-文件操作漏洞"><a href="#7-文件操作漏洞" class="headerlink" title="7.文件操作漏洞"></a>7.文件操作漏洞</h3><p>上传漏洞可以上传WebShell、木马；下载漏洞可以下载系统任意文件、程序代码。常见的文件操作漏洞包括文件上传漏洞、任意文件下载漏洞、文件包含漏洞。</p>
+<p>文件上传漏洞需要满足以下条件：1.可以上传可执行脚本；2.脚本拥有执行权限。</p>
+<p>任意文件下载漏洞需要满足以下条件：1.未验证下载文件格式；2.未限制请求路径。</p>
+<h2 id="SQL注入漏洞工具SQLMAP"><a href="#SQL注入漏洞工具SQLMAP" class="headerlink" title="SQL注入漏洞工具SQLMAP"></a>SQL注入漏洞工具SQLMAP</h2><ol>
+<li>在sql安装目录按住shift单击鼠标右键，选择“在此处打开命令窗口”。</li>
+<li>在命令行输入python sql然后按tab键可以自动补全。</li>
+<li>一般缩写的参数前面加<code>-</code>，完整的参数前面加<code>--</code>。</li>
+<li>常用参数：<ul>
+<li><code>-u</code>表示url</li>
+<li><code>--users</code>可以显示有哪些用户</li>
+<li><code>--dbs</code>显示有哪些数据库</li>
+<li><code>--current-user</code>和<code>--current-db</code>查看当前用户和当前数据库</li>
+<li><code>--tables -D &quot;数据库名&quot;</code>显示数据库下的数据表</li>
+<li><code>--columns -T &quot;数据表名&quot; -D &quot;数据库名&quot;</code>查看某数据库下某数据表的列信息</li>
+<li><code>--count -T &quot;数据表名&quot; -D &quot;数据库名&quot;</code>查看某数据库下某数据表有几条数据</li>
+<li><code>--dump -T &quot;数据表名&quot; -D &quot;数据库名&quot;</code>抓取某数据库下某数据表的数据</li>
+<li><code>--dump -T &quot;数据表名&quot; -D &quot;数据库名&quot; --start 2 --stop 3</code>抓取某数据库下某数据表的第2条到第3条数据</li>
+<li><code>--dump-all -D &quot;数据库名&quot;</code>抓取数据库的所有数据</li>
+<li>对于post请求，可以先用抓包工具抓取post数据包，然后用<code>-r &quot;postdata.txt&quot;</code>参数。也可以用<code>-u &quot;url地址&quot; --data=&quot;参数样例&quot;</code>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="DVWA"><a href="#DVWA" class="headerlink" title="DVWA"></a>DVWA</h2><h3 id="command-Injection"><a href="#command-Injection" class="headerlink" title="command Injection"></a>command Injection</h3><h4 id="low"><a href="#low" class="headerlink" title="low"></a>low</h4><p>127.0.0.1 &amp;&amp; net user</p>
+<h4 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h4><p>127.0.0.1 &amp; net user</p>
+<h4 id="high"><a href="#high" class="headerlink" title="high"></a>high</h4><p>127.0.0.1 | net user</p>
+<p>&amp;, &amp;&amp;, |, ||四种命令拼接符号的区别</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">A&amp;B</th>
+<th style="text-align:left">A&amp;&amp;B</th>
+<th style="text-align:left">A&#124;B</th>
+<th style="text-align:left">A&#124;&#124;B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">简单的拼接<br>AB之间无约束关系</td>
+<td style="text-align:left">A执行成功<br>才会执行B</td>
+<td style="text-align:left">A的输出<br>作为B的输入</td>
+<td style="text-align:left">A执行失败<br>才会执行B</td>
+</tr>
+</tbody>
+</table>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/web-security-02/" class="prev">PREV</a><a href="/2017/jjhouCpp1114-04/" class="next">NEXT</a></div><div data-thread-key="2017/web-security-01/" data-title="Web安全学习笔记（1）" data-url="http://leavesite.com/2017/web-security-01/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

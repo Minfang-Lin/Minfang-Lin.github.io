@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据库学习笔记（四）- MyBatis · 叶卡林娜的部落格</title><meta name="description" content="数据库学习笔记（四）- MyBatis - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据库学习笔记（四）- MyBatis</h1><div class="post-info">Oct 3, 2016</div><div class="post-content"><p>面向对象的世界中数据是对象，关系型数据库中数据是以行、列、二元表的形式存储的。<br>ORM（Object/Relation Mapping）框架帮助我们持久化类与数据库表之间的映射关系，对持久化对象的操作自动转换成对数据库表的操作。关系型数据库的每一行映射为每一个对象，每一列映射为对象的每个属性。</p>
+<p>MyBatis的工作流机制：</p>
+<p>首先需要在应用程序启动时，加载一个xml文件，这个文件里定义了后端数据库的地址，同时也定义了Sql和Java方法之间的映射关系。应用程序调用MyBatis的API接口传入参数与SQL ID，MyBatis会自动匹配对应的Sql语句，生成完整的Sql语句，访问后端的数据库，转换执行的结果为Java对象，然后将执行结果返回给应用程序。</p>
+<a id="more"></a>
+<p>MyBatis环境搭建</p>
+<ol>
+<li>jar包：<code>mybatis-3.2.3.jar</code>、<code>mysql-connector-java-5.1.12.jar</code></li>
+<li>sqlSessionFectory：包含MyBatis系統的核心配置，包括后端数据库连接实例的数据源，决定事务范围和控制方式的事务管理器。</li>
+</ol>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/spring-note-1/" class="prev">PREV</a><a href="/2016/database-note-3/" class="next">NEXT</a></div><div data-thread-key="2016/database-note-4/" data-title="数据库学习笔记（四）- MyBatis" data-url="http://leavesite.com/2016/database-note-4/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

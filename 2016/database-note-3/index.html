@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数据库学习笔记（三）- 事务 · 叶卡林娜的部落格</title><meta name="description" content="数据库学习笔记（三）- 事务 - Minfang Lin"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://leavesite.com/atom.xml" title="叶卡林娜的部落格"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/Minfang-Lin" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">数据库学习笔记（三）- 事务</h1><div class="post-info">Oct 3, 2016</div><div class="post-content"><p>事务（Transaction）是并发控制的基本单位，指作为单个逻辑工作单元执行的一系列操作，而这些逻辑单元需要满足ACID（原子性atomicity、一致性consistency、隔离性isolation、持久性durability）的特性。</p>
+<p>JDBC的Connection提供三个方法实现事务</p>
+<ol>
+<li><code>.setAutoCommit()</code>设置为false，开启事务，默认为true。</li>
+<li><code>.commit()</code>提交事务</li>
+<li><code>.rollback()</code>回滚事务</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> BasicDataSource ds = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String DRIVER_NAME = <span class="string">"com.mysql.jdbc.Driver"</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String DB_URL = <span class="string">"jdbc:mysql://localhost:3306/jdbctest?characterEncoding=utf8&amp;useSSL=false"</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String DB_USER_NAME = <span class="string">"root"</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String DB_PASSWORD = <span class="string">"123456"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dbpoolInit</span><span class="params">()</span> </span>&#123;</div><div class="line">        ds = <span class="keyword">new</span> BasicDataSource();</div><div class="line">        ds.setUrl(DB_URL);</div><div class="line">        ds.setDriverClassName(DRIVER_NAME);</div><div class="line">        ds.setUsername(DB_USER_NAME);</div><div class="line">        ds.setPassword(DB_PASSWORD);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dbPoolTest</span><span class="params">(String buyer, String ProductName)</span> </span>&#123;</div><div class="line">        Connection conn = <span class="keyword">null</span>;</div><div class="line">        PreparedStatement ptmt1 = <span class="keyword">null</span>;</div><div class="line">        PreparedStatement ptmt2 = <span class="keyword">null</span>;</div><div class="line">        Savepoint sp = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            conn = ds.getConnection();</div><div class="line">            conn.setAutoCommit(<span class="keyword">false</span>);</div><div class="line">            ptmt1 = conn.prepareStatement(<span class="string">"UPDATE Inventory SET Inventory=Inventory-1 where ProductName = ?"</span>);</div><div class="line">            ptmt1.setString(<span class="number">1</span>, ProductName);</div><div class="line">            ptmt1.execute();</div><div class="line">            sp = conn.setSavepoint(); <span class="comment">//保存检查点</span></div><div class="line">            ptmt2 = conn.prepareStatement(<span class="string">"INSERT INTO OrderList (buyer, ProductName) VALUES (?, ?)"</span>);</div><div class="line">            ptmt2.setString(<span class="number">1</span>, buyer);</div><div class="line">            ptmt2.setString(<span class="number">2</span>, ProductName);</div><div class="line">            ptmt2.execute();</div><div class="line">            conn.commit();</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">            <span class="keyword">if</span> (conn != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    conn.rollback();</div><div class="line">                &#125; <span class="keyword">catch</span> (SQLException e1) &#123;</div><div class="line">                    e1.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">if</span> (conn != <span class="keyword">null</span>) &#123;</div><div class="line">                    conn.close();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (ptmt1 != <span class="keyword">null</span>) &#123;</div><div class="line">                    ptmt1.close();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (ptmt2 != <span class="keyword">null</span>) &#123;</div><div class="line">                    ptmt2.close();</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        dbpoolInit();</div><div class="line">        <span class="keyword">new</span> TransactionTest().dbPoolTest(<span class="string">"XiaoMing"</span>, <span class="string">"bag"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>脏读：一个事物读取了另一个事物未提交的更新。<br>不可重复读：同一事物中两次读取相同的记录，结果不一样。<br>幻读：两次读取的结果包含的行记录数不一样。</p>
+<p>事务隔离级别：</p>
+<ol>
+<li>读未提交（read uncommitted）：允许出现脏读。</li>
+<li>读提交（read committed)：不允许出现脏读，可以有不可重复读。</li>
+<li>重复读（repeatable read）：不允许出现不可重复读，但可以有幻读。</li>
+<li>串行化（serializable）：不允许出现幻读。</li>
+</ol>
+<p>MySQL的默认事物隔离级别为重复读。事务隔离级别越高，数据库性能越差。可以通过Connection对象的<code>.getTransactionIsolation</code>和<code>.setTransactionIsolation</code>设置隔离级别。</p>
+<p>死锁是指两个或两个以上的事务在执行过程中，因争夺锁资源而造成的一种相互等待的现象。</p>
+<p>死锁产生的必要条件</p>
+<ol>
+<li>互斥：并发执行事务为了进行必要的隔离保证执行正确，在事务结束前，需要对事务的数据库记录持锁，保证多个事务对相同数据库记录串行修改。对于大型并发系统<strong>无法避免</strong>。</li>
+<li>请求与保持：一个事务需要多个锁资源，已经持有一个资源锁，等待另外一个资源锁。死锁仅发生在请求两个或者两个以上的锁对象。由于应用需要，<strong>难以消除</strong>。</li>
+<li>不剥夺：已经获得锁资源的事务，在未执行前，不能被强制剥夺，只能使用完时，由事务自己释放。一般用于已经出现死锁时，通过破坏该条件达到解除死锁的目的。数据库系统通常通过一定的死锁检测机制发现死锁，强制回滚代价相对较小的事务，达到解除死锁的目的。</li>
+<li>环路等待：发生死锁时，必然存在一个事务——锁的环形链。按照同一顺序获取锁，可以破坏该条件。通过分析死锁事务之间的锁竞争关系，调整SQL的顺序，达到消除死锁的目的。</li>
+</ol>
+<p>MySQL中主要由两种锁，排它锁（X)、共享锁（S)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">已有锁\预加锁</th>
+<th style="text-align:center">X</th>
+<th style="text-align:center">S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">X</td>
+<td style="text-align:center">冲突</td>
+<td style="text-align:center">冲突</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:center">冲突</td>
+<td style="text-align:center">兼容</td>
+</tr>
+</tbody>
+</table>
+<p>加锁方式：</p>
+<ol>
+<li>外部加锁：由应用程序添加，锁依赖关系较容易分析，主要有两种形式<ul>
+<li>共享锁（S）：<code>select * from table lock in share mode</code></li>
+<li>排它锁（X）：<code>select * from table for update</code></li>
+</ul>
+</li>
+<li>内部加锁：为了实现ACID特性，由数据库系统内部自动添加。加锁规则繁琐，与SQL执行计划、事务隔离级别、表索引结构有关。</li>
+</ol>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/database-note-4/" class="prev">PREV</a><a href="/2016/database-note-2/" class="next">NEXT</a></div><div data-thread-key="2016/database-note-3/" data-title="数据库学习笔记（三）- 事务" data-url="http://leavesite.com/2016/database-note-3/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"leavesite"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2013 - 2017 <a href="http://leavesite.com">Minfang Lin</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
