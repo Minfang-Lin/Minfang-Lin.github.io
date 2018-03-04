@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="用”系统思维”分析问题：C语言程序举例// 在ISO C90标准，32位系统上-2147483648 &amp;lt; 2147483647    // false，与事实不符int i = -2147483648;i &amp;lt; 2147483647              // true-2147483647-1 &amp;lt; 2147483647  // true 要理解这个问题，必须知道：①编译器如何">
+<meta name="keywords" content="中国大学MOOC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统基础（一）：程序的表示、转换与链接笔记 第一周">
+<meta property="og:url" content="http://leavesite.com/2018/computer-system-part1-w1/index.html">
+<meta property="og:site_name" content="叶卡林娜的部落格">
+<meta property="og:description" content="用”系统思维”分析问题：C语言程序举例// 在ISO C90标准，32位系统上-2147483648 &amp;lt; 2147483647    // false，与事实不符int i = -2147483648;i &amp;lt; 2147483647              // true-2147483647-1 &amp;lt; 2147483647  // true 要理解这个问题，必须知道：①编译器如何">
+<meta property="og:updated_time" content="2018-03-04T11:37:00.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机系统基础（一）：程序的表示、转换与链接笔记 第一周">
+<meta name="twitter:description" content="用”系统思维”分析问题：C语言程序举例// 在ISO C90标准，32位系统上-2147483648 &amp;lt; 2147483647    // false，与事实不符int i = -2147483648;i &amp;lt; 2147483647              // true-2147483647-1 &amp;lt; 2147483647  // true 要理解这个问题，必须知道：①编译器如何">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>计算机系统基础（一）：程序的表示、转换与链接笔记 第一周</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/走进天文学/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2018/computer-system-part1-w1/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2018/computer-system-part1-w1/&text=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2018/computer-system-part1-w1/&is_video=false&description=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周&body=Check out this article: http://leavesite.com/2018/computer-system-part1-w1/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2018/computer-system-part1-w1/&name=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用”系统思维”分析问题：C语言程序举例"><span class="toc-number">1.</span> <span class="toc-text">用”系统思维”分析问题：C语言程序举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机系统"><span class="toc-number">2.</span> <span class="toc-text">计算机系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#冯诺依曼结构的主要思想"><span class="toc-number">2.1.</span> <span class="toc-text">冯诺依曼结构的主要思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机是如何工作的"><span class="toc-number">2.2.</span> <span class="toc-text">计算机是如何工作的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序开发和执行过程"><span class="toc-number">2.3.</span> <span class="toc-text">程序开发和执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机系统层次结构"><span class="toc-number">2.4.</span> <span class="toc-text">计算机系统层次结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#指令集体系结构（ISA）"><span class="toc-number">2.4.1.</span> <span class="toc-text">指令集体系结构（ISA）</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        计算机系统基础（一）：程序的表示、转换与链接笔记 第一周
+    </h1>
+
+
+
+    <div class="meta">
+      <!--
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><i class="fa fa-pencil"></i> 叶卡林娜的部落格 </span>
+      </span>
+      -->
+      
+    <div class="postdate">
+        <time datetime="2018-03-02T14:25:00.000Z" itemprop="datePublished">2018-03-02</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tags"></i>
+        <a class="tag-link" href="/tags/中国大学MOOC/">中国大学MOOC</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="用”系统思维”分析问题：C语言程序举例"><a href="#用”系统思维”分析问题：C语言程序举例" class="headerlink" title="用”系统思维”分析问题：C语言程序举例"></a>用”系统思维”分析问题：C语言程序举例</h2><figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 在ISO C90标准，32位系统上</span></div><div class="line"><span class="number">-2147483648</span> &lt; <span class="number">2147483647</span>    <span class="comment">// false，与事实不符</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> i = <span class="number">-2147483648</span>;</div><div class="line">i &lt; <span class="number">2147483647</span>              <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="number">-2147483647</span><span class="number">-1</span> &lt; <span class="number">2147483647</span>  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①编译器如何处理字面量<br>②高级语言中运算规则<br>③高级语言与指令之间的对应关系<br>④机器指令的执行过程<br>⑤机器级数据的表示和运算</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">unsigned</span> len)</span> </span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> i, sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;=len<span class="number">-1</span>; i++)</div><div class="line">        sum += a[i];</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 当len=0时，调用sum函数，报错Segmentation fault</span></div><div class="line"><span class="comment">// 当len为int型时正常</span></div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①高级语言中运算规则：当又有unsigned，又有int时是如何处理的<br>②机器指令的含义和执行<br>③计算机内部的运算电路<br>④异常的检测和处理<br>⑤虚拟地址空间</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 若x和y为int型，当x=65535时，y=x*x; y的值为多少？</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">65535</span>;</div><div class="line">    <span class="keyword">int</span> y = x*x;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, y);  <span class="comment">// 输出-131071</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 对于任何int型变量x和y，(x&gt;y)==(-x&lt;-y)总成立吗？</span></div><div class="line"><span class="comment">// 当x=-2147483648，y任意（除-2147483648外）时不成立</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> x = <span class="number">-2147483648</span>;</div><div class="line">    <span class="keyword">int</span> y = <span class="number">0</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, (x&gt;y)==(-x&lt;-y));  <span class="comment">// 0</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①机器级数据的表示<br>②机器指令的执行<br>③计算机内部的运算电路</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main.c</span></div><div class="line"><span class="keyword">int</span> d = <span class="number">100</span>;</div><div class="line"><span class="keyword">int</span> x = <span class="number">200</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    p1();</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"d=%d, x=%d\n"</span>, d, x);  <span class="comment">// d=0, x=1072693248</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// p1.c</span></div><div class="line"><span class="keyword">double</span> d;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">p1</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    d = <span class="number">1.0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①机器级数据的表示<br>②变量的存储空间分配<br>③数据的大端/小端储存方式<br>④链接器的符号解析规则</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">copy_array</span><span class="params">(<span class="keyword">int</span>* <span class="built_in">array</span>, <span class="keyword">int</span> count)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">int</span>* myarray = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(count*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="keyword">if</span> (myarray == <span class="literal">NULL</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;count; i++)</div><div class="line">        myarray[i] = <span class="built_in">array</span>[i];</div><div class="line">    <span class="keyword">return</span> count;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 当参数count很大时，count*sizeof(int)会溢出。</span></div><div class="line"><span class="comment">// 如count=2^30+1时，count*sizeof(int)=4。而使得堆中大量数据被破坏。</span></div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①乘法运算及溢出<br>②虚拟地址空间<br>③存储空间映射</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line"><span class="keyword">int</span> b = a/<span class="number">-1</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, b);</div><div class="line"><span class="comment">// 运行结果：-2147483648</span></div><div class="line"><span class="comment">// *注：在LLVM version 9.0.0 (clang-900.0.39.2)运行结果为Floating point exception</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> a = <span class="number">0x80000000</span>;</div><div class="line"><span class="keyword">int</span> b = <span class="number">-1</span>;</div><div class="line"><span class="keyword">int</span> c = a/b;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, c);</div><div class="line"><span class="comment">// Floating point exception</span></div></pre></td></tr></table></figure>
+<p>反汇编得知，第一段代码异常是因为除以-1被优化成取负指令neg，故未发生除法溢出。第二段代码因为a/b只能用带符号的除法指令IDIV实现，而这个除法指令是不能生产OF（溢出）标志的。能够判断出溢出异常实际上是因为在做除法计算是会对被除数和除数进行判断，这段代码里对是“除法错”异常#DE（类型0）发出的SIGFPE信号。</p>
+<p>要理解这个问题，必须知道：<br>①编译器如何优化<br>②机器级数据的表示<br>③机器指令的含义和执行<br>④计算机内部的运算电路<br>⑤除法错异常的处理</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">double</span> a = <span class="number">10</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"a=%d"</span>, a);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 在IA-32上运行时，打印结果为a=0</span></div><div class="line"><span class="comment">// 在x86-64上运行，打印出来的a是一个不确定值</span></div><div class="line"><span class="comment">// *注：warning: format specifies type 'int' but the argument has type 'double'</span></div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①IEEE 754的表示<br>②X87 FPU的体系结构<br>③IA-32和x86-64中过程调用的参数传递<br>④计算机内部的运算电路</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> i)</span> </span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">volatile</span> <span class="keyword">double</span> d[<span class="number">1</span>] = &#123;<span class="number">3.14</span>&#125;;</div><div class="line">    <span class="keyword">volatile</span> <span class="keyword">long</span> <span class="keyword">int</span> a[<span class="number">2</span>];</div><div class="line">    a[i] = <span class="number">1073741824</span>;</div><div class="line">    <span class="keyword">return</span> d[<span class="number">0</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 后面的部分为LLVM version 9.0.0 (clang-900.0.39.2)运行结果</span></div><div class="line"><span class="comment">fun(0): 3.14                 // 3.14</span></div><div class="line"><span class="comment">fun(1): 3.14                 // 3.14</span></div><div class="line"><span class="comment">fun(2): 3.1399998664856      // 0.00</span></div><div class="line"><span class="comment">fun(3): 2.00000061035156     // Abort trap</span></div><div class="line"><span class="comment">fun(4): 3.14, 然后存储保护错   // Abort trap</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①机器级数据的表示<br>②过程调用机制<br>③栈帧中数据的布局</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 行优先复制</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">copyij</span> <span class="params">(<span class="keyword">int</span> src[<span class="number">2048</span>][<span class="number">2048</span>], <span class="keyword">int</span> dst[<span class="number">2048</span>][<span class="number">2048</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">2048</span>; i++)</div><div class="line">        <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;<span class="number">2048</span>; j++)</div><div class="line">            dst[i][j] = src[i][j];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 列优先复制</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">copyij</span> <span class="params">(<span class="keyword">int</span> src[<span class="number">2048</span>][<span class="number">2048</span>], <span class="keyword">int</span> dst[<span class="number">2048</span>][<span class="number">2048</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;<span class="number">2048</span>; j++)</div><div class="line">        <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">2048</span>; i++)</div><div class="line">            dst[i][j] = src[i][j];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 上面两个程序功能完全一样，算法完全一样，时间和空间复杂度完全一样，但执行时间行优先比列优先快21倍</span></div></pre></td></tr></table></figure>
+<p>要理解这个问题，必须知道：<br>①数组的存放方式<br>②Cache机制<br>③访问局限性</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</div><div class="line">    <span class="keyword">double</span>* p = (<span class="keyword">double</span>*) &amp;a;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%f\n"</span>, *p);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%f\n"</span>, (<span class="keyword">double</span>)a); </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// -124611659368806372889759754720407547307460851250672333601793485342599952830680188745055200175431562344736125964380568777588649699734133946133318828765925290491625969102012218896410637436116313047040.000000</span></div><div class="line"><span class="comment">// 10.000000</span></div></pre></td></tr></table></figure>
+<p>这两条打印语句在汇编代码中是fldl和fildl指令的差别。i的意思是先作为int，强制转换为double再打印，没有i则直接把0/1序列当做double打印。</p>
+<p>要理解这个问题，必须知道：<br>①数据的表示<br>②编译（程序的转换）<br>③局部变量在栈中的位置</p>
+<h2 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h2><p>计算机系统的抽象层的转换</p>
+<p>应用（问题）-&gt;算法-&gt;编程（语言）-&gt;操作系统/虚拟机-&gt;指令集体系结构（ISA）-&gt;微体系结构-&gt;功能部件-&gt;电路-&gt;器件</p>
+<p>程序执行结果不仅取决于算法、程序编写，而且取决于语言处理系统、操作系统、ISA、微体系结构。</p>
+<p>第一台通用计算机ENIAC（Electronic Numberical Integrator And Computer）是1946年由美国宾夕法尼亚大学研制，由电子真空管组成，用于二战时期解决复杂弹道计算问题，运行速度5000次加法/s，可以计算平方、立方、sin、cos等，用十进制表示信息并运算，采用手动编程，通过设置开关和插拔电缆来实现。</p>
+<p>冯诺依曼于1944年被邀请加入ENIAC团队。1945年，他在共同讨论基础上，以“关于EDVAC的报告草案”为题，发表了全新的“存储程序通用电子计算机方案”，普林斯顿高等研究院一句这份报告批准冯诺依曼建造计算机。</p>
+<p>1946年，普林斯顿高等研究院（IAS）开始设计“存储程序”计算机，他们设计的在1051年完成，被称为IAS计算机。（第一台存储程序计算机EDSAC在1949年由英国剑桥大学完成。）</p>
+<p>那份报告中提出的计算机结构，被称为“冯诺依曼结构”，其中最重要的思想是“储存程序（Stored-program）”。它的工作方式是：任何计算机要完成的工作都要先被编写成程序，然后将程序和原始数据送入主存并启动执行。一旦程序被启动，计算机应能在不许操作人员干预的情况下，自动完成逐条取出指令和执行指令的任务。早期，部件之间用分散方式相连，现在大多用总线方式。</p>
+<h3 id="冯诺依曼结构的主要思想"><a href="#冯诺依曼结构的主要思想" class="headerlink" title="冯诺依曼结构的主要思想"></a>冯诺依曼结构的主要思想</h3><ol>
+<li>计算机应由运算器、控制器、储存器、输入设备和输出设备五个基本部件组成。</li>
+<li>各部件的功能是：<ul>
+<li>存储器不仅能存放数据，而且也能存放指令，形式上两者没有区别，但计算机应能区分数据还是指令。</li>
+<li>控制器应能自动取出指令来执行。</li>
+<li>运算器应能进行加、减、乘、除四种基本算术运算，并且也能进行一些逻辑运算和附加运算；</li>
+<li>操作人员可以通过输入设备、输出设备和主机进行通信。</li>
+</ul>
+</li>
+<li>内部以二进制表示指令和数据。每条指令由操作码和地址码两部分组成。操作码指出操作类型，地址码指出操作数的地址。由一串指令组成程序。</li>
+<li>采用“存储程序”工作方式。</li>
+</ol>
+<h3 id="计算机是如何工作的"><a href="#计算机是如何工作的" class="headerlink" title="计算机是如何工作的"></a>计算机是如何工作的</h3><p>程序在执行前：数据和指令先存放在存储器中，每条指令和每个数据都有地址，指令按序存放，指令由OP、ADDR字段组成，程序起始地址置PC。<br>开始执行程序：根据PC取指令-&gt;指令译码-&gt;取操作数-&gt;指令执行-&gt;回写结果-&gt;修改PC的值-&gt;继续执行下一条指令。</p>
+<h3 id="程序开发和执行过程"><a href="#程序开发和执行过程" class="headerlink" title="程序开发和执行过程"></a>程序开发和执行过程</h3><p>汇编语言由汇编指令构成，用助记符和标号来表示指令（与机器指令一一对应）。<br>指令包含操作码和操作数（或其地址码），其中机器指令用二进制表示，汇编指令用符号表示。指令只能描述①取（或存一个数）；②两个数的计算（加减乘除即逻辑与、或等）；③根据运算结果判断是否转移执行。</p>
+<p>高级语言具有以下特点：<br>①与具体机器结构无关；<br>②面向算法编程，比机器语言的描述能力强的多；<br>③高级语言中的一条语句可以对应几条，甚至几百条指令；<br>④有“面向过程”和“面向对象”的语言之分；<br>⑤处理逻辑分为三种结构：顺序结构、选择结构、循环结构；<br>⑥有两种转换方式：“编译”和“解释”。“编译程序”（Complier）：将高级语言源程序转换为机器级目标程序，执行时只要启动目标程序即可。“解释程序”（Interpreter）：将高级语言语句逐条翻译成机器指令并立即执行，不生成目标文件。</p>
+<p>GCC + Linux平台中的处理流程：<br>hello.c（源程序）经过预处理变为hello.i，再经过编译为hello.s（汇编语言程序），再经过汇编为hello.o（二进制的可重定位目标程序），与其他目标程序进行链接形成hello（二进制的可执行目标程序）。</p>
+<p>最早的程序开发是直接输入指令和数据，启动后把第一条指令地址送PC开始执行。</p>
+<p>高级语言开发程序需要更复杂的支持环境，包括①编辑器编写源程序；②一套翻译转换软件处理各种源程序（编译方式：预处理程序、编译器、汇编器、链接器；解释方式：解释程序）；③一个可执行程序界面，包括GUI（图形界面）、CUI（命令行界面）。</p>
+<p>支撑程序开发和运行的环境由系统软件提供，最重要的系统软件是操作系统和语言处理系统。语言处理系统运行在操作系统之上，操作系统利用指令管理硬件。</p>
+<h3 id="计算机系统层次结构"><a href="#计算机系统层次结构" class="headerlink" title="计算机系统层次结构"></a>计算机系统层次结构</h3><p>①第一代程序设计语言：机器语言。应用程序-&gt;指令集体系结构-&gt;计算机硬件<br>②第二代程序设计语言：汇编语言。应用程序-&gt;汇编程序-&gt;操作系统-&gt;指令集体系结构-&gt;计算机硬件<br>③第三代程序设计语言：过程式语言，编码时需要描述实现过程。应用程序-&gt;语言处理系统-&gt;操作系统-&gt;指令集体系结构-&gt;计算机硬件<br>④第四代程序设计语言：非过程化语言，编码时只需要说明“做什么”，不需要描述具体的算法实现细节</p>
+<p>语言处理系统包括：各种语言处理程序（如编译、汇编、链接）、运行时的系统（如库函数、调试、优化等功能）<br>操作系统包括人机交互界面、提供服务功能的内核例程。</p>
+<p>计算机系统的不同用户：<br>①最终用户：工作由应用程序提供的最上面的抽象层<br>②系统管理员：工作在由操作系统提供的抽象层<br>③应用程序员：工作在由语言处理系统（主要有编译器和汇编器）的抽象层<br>④系统程序员（实现系统软件）：工作在ISA层次，必须对ISA非常了解</p>
+<p>编译器和汇编器的目标程序有机器级代码组成，操作系统通过指令直接对硬件进行编程控制。</p>
+<h4 id="指令集体系结构（ISA）"><a href="#指令集体系结构（ISA）" class="headerlink" title="指令集体系结构（ISA）"></a>指令集体系结构（ISA）</h4><p>ISA处于软件和硬件的交界面，是两者的接口，它规定了如何使用硬件。<br>①可执行的指令集合包括指令格式、操作种类以及每种操作对应的操作数的相应规定；<br>②指令可以接受的操作数类型；<br>③操作数所能存放的寄存器组的结构，包括每个寄存器的名称、编号、长度和用途；<br>④操作数所能存放的存储空间的大小和编址方式；<br>⑤操作数在存储空间存放时按照大端还是小端的方式存放；<br>⑥指令获取操作数的方式，即寻址方式；<br>⑦指令执行过程中的控制方式，包括程序计数器（PC）、条件码定义等。</p>
+<p>不同的ISA规定的指令集不同，如IA-32、MIPS、ARM等。计算机组成必须能够实现ISA规定的功能，如提供GPRs（通用寄存器组）、标志、运算电路等。同一种ISA可以由不同的计算机组成，如乘法指令可用ALU（算术逻辑部件）或乘法器实现。</p>
+
+  </div>
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用”系统思维”分析问题：C语言程序举例"><span class="toc-number">1.</span> <span class="toc-text">用”系统思维”分析问题：C语言程序举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机系统"><span class="toc-number">2.</span> <span class="toc-text">计算机系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#冯诺依曼结构的主要思想"><span class="toc-number">2.1.</span> <span class="toc-text">冯诺依曼结构的主要思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机是如何工作的"><span class="toc-number">2.2.</span> <span class="toc-text">计算机是如何工作的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序开发和执行过程"><span class="toc-number">2.3.</span> <span class="toc-text">程序开发和执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机系统层次结构"><span class="toc-number">2.4.</span> <span class="toc-text">计算机系统层次结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#指令集体系结构（ISA）"><span class="toc-number">2.4.1.</span> <span class="toc-text">指令集体系结构（ISA）</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://leavesite.com/2018/computer-system-part1-w1/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://leavesite.com/2018/computer-system-part1-w1/&text=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://leavesite.com/2018/computer-system-part1-w1/&is_video=false&description=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周&body=Check out this article: http://leavesite.com/2018/computer-system-part1-w1/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://leavesite.com/2018/computer-system-part1-w1/&title=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://leavesite.com/2018/computer-system-part1-w1/&name=计算机系统基础（一）：程序的表示、转换与链接笔记 第一周&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Minfang Lin, Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/Minfang-Lin">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
